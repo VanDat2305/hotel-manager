@@ -11,7 +11,7 @@
     <div class="row">
         <div class="card col-12">
             <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">{{ __($title) }}</h3>
                 <p class="">
                 </p>
             </div>
@@ -25,12 +25,12 @@
                         </tr>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Image</th>
-                            <th>Description</th>
-                            <th>Status</th>
+                            <th>{{__('NAME')}}</th>
+                            <th>{{__('PRICE')}}</th>
+                            <th>{{__('CATEGORY')}}</th>
+                            <th>{{__('IMAGE')}}</th>
+                            <th style="width:20rem">{{__('DESCRIPTION')}}</th>
+                            <th>{{__('STATUS')}}</th>
                             <th><a href="{{ route('admin.room.create') }}"><i class="fa fa-plus"></i></a></th>
                         </tr>
                     </thead>
@@ -49,7 +49,7 @@
                                 <td>
                                     <button
                                         class="btn {{ $room->status == config('custom.room_status_text.active') ? 'btn-success' : 'btn-danger' }} btn-sm btn-update"
-                                        data-id="{{ $room->id }}">{{ $room->status }}</button>
+                                        data-id="{{ $room->id }}">{{ __($room->status) }}</button>
                                 </td>
                                 <td>
                                     <a class="btn btn-primary btn-sm"

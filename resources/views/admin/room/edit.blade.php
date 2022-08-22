@@ -7,7 +7,7 @@
         <div class="col-6">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Edit Room</h3>
+                    <h3 class="card-title">{{__('Edit room')}}</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -15,7 +15,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">{{__('NAME')}}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
                                 value="{{ $room->name }}" placeholder="Enter name">
                         </div>
@@ -29,7 +29,7 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="price">Price</label>
+                            <label for="price">{{__('PRICE')}}</label>
                             <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $room->price }}"
                                 placeholder="Enter price">
                         </div>
@@ -43,7 +43,7 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="">Category {{$room->category_id}}</label>
+                            <label for="">{{__('CATEGORY')}}</label>
                             <select name="category_id" class="form-control" id="">
                                 @foreach ($categories as $category)
                                     <option {{ $category->id == $room->category_id ? 'selected' : ''}} value="{{ $category->id }}">{{ $category->name  }} </option>
@@ -51,7 +51,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 col-sm-4 control-label">Image</label>
+                            <label class="col-md-3 col-sm-4 control-label">{{__('IMAGE')}}</label>
                             <div class="col-md-9 col-sm-8">
                                 <div class="row">
                                     <div class="col-xs-6">
@@ -89,7 +89,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{__('SAVE')}}</button>
                     </div>
                 </form>
             </div>
@@ -119,7 +119,7 @@
 
         });
         $('#summernote').summernote({
-            placeholder: 'Enter content....',
+            placeholder: '{{__('Enter description')}}',
             tabsize: 2,
             height: 200,
             minHeight: 100,

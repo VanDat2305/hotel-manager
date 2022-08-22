@@ -11,7 +11,7 @@
     <div class="row">
         <div class="card col-12">
             <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">{{ __($title) }}</h3>
                 <p class="">
                 </p>
             </div>
@@ -24,9 +24,9 @@
                         </tr>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Author</th>
-                            <th>Status</th>
+                            <th>{{__('NAME')}}</th>
+                            <th>{{__('AUTHOR')}}</th>
+                            <th>{{__('STATUS')}}</th>
                             <th>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#modal-default">
@@ -44,7 +44,7 @@
                                 <td>{{ $category->user->name }}</td>
                                 <td>
                                     <button class="btn {{$category->status == config('custom.category_status_text.active') ? 'btn-success' :'btn-danger'}} btn-sm btn-update"
-                                            data-id="{{ $category->id }}">{{ $category->status }}</button>
+                                            data-id="{{ $category->id }}">{{ __($category->status) }}</button>
                                 <td>
                                     <button class="btn btn-primary btn-sm btn-modal-edit" data-toggle="modal"
                                         data-target="#modal-edit" data-name="{{ $category->name }}"
@@ -69,15 +69,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
+                    <h4 class="modal-title">{{__('Add category')}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="Name">Name</label>
-                        <input type="text" class="form-control" name="name" id="nameInput" placeholder="Enter Name">
+                        <label for="Name">{{__('NAME')}}</label>
+                        <input type="text" class="form-control" name="name" id="nameInput" placeholder="{{__('Enter Name')}}">
                     </div>
                     <div class="alert alert-danger alert-dismissible fade  p-1 " id="message" role="alert">
                         <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-                    <button type="button" class="btn btn-primary btn-create">Save</button>
+                    <button type="button" class="btn btn-primary btn-create">{{__('SAVE')}}</button>
                 </div>
             </div>
         </div>
@@ -97,15 +97,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Category</h4>
+                    <h4 class="modal-title">{{__('Edit category')}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="Name">Name</label>
-                        <input type="text" class="form-control" name="nameEdit" id="nameEdit" placeholder="Enter Name">
+                        <label for="Name">{{__('NAME')}}</label>
+                        <input type="text" class="form-control" name="nameEdit" id="nameEdit" placeholder="{{__('Enter Name')}}">
                     </div>
                     <input type="hidden" value="" id="idCate">
                     <div class="alert alert-danger alert-dismissible fade  p-1 " id="messageEdit" role="alert">
@@ -118,7 +118,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-                    <button type="button" class="btn btn-primary btn-edit">Save</button>
+                    <button type="button" class="btn btn-primary btn-edit">{{__('SAVE')}}</button>
                 </div>
             </div>
         </div>

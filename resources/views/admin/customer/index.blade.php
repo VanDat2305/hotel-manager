@@ -11,7 +11,7 @@
     <div class="row">
         <div class="card col-12">
             <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">{{ __($title) }}</h3>
                 <p class="">
                 </p>
             </div>
@@ -24,11 +24,11 @@
                         </tr>
                         <tr>
                             <th>#</th>
-                            <th>Fullname</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Status</th>
+                            <th>{{__('Fullname')}}</th>
+                            <th>{{__('Email')}}</th>
+                            <th>{{__('PHONE')}}</th>
+                            <th>{{__('ADDRESS')}}</th>
+                            <th>{{__('STATUS')}}</th>
                             <th>
                                 {{-- <a href="{{ route('admin.customer.create') }}"><i class="fa fa-plus"></i></a> --}}
                             </th>
@@ -45,11 +45,8 @@
                                 <td>
                                     <button
                                         class="btn {{ $customer->status == config('custom.customer_status_text.active') ? 'btn-success' : 'btn-danger' }} btn-sm btn-update"
-                                        data-id="{{ $customer->id }}">{{ $customer->status }}</button>
+                                        data-id="{{ $customer->id }}">{{ __($customer->status) }}</button>
                                 <td>
-                                    {{-- <a class="btn btn-primary btn-sm"
-                                        href="{{ route('admin.customer.edit', ['id' => $customer->id]) }}"><i
-                                            class="fa fa-edit"></i></a> --}}
                                     <button class="btn btn-danger btn-sm delete-confirm" value="{{ $customer->id }}"><i
                                             class="fa fa-trash"></i></button>
                                 </td>

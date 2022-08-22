@@ -10,12 +10,12 @@
             <div class="inner">
                 <h3>{{$countBooking}}</h3>
 
-                <p>Booking</p>
+                <p>{{__('BOOKING')}}</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="{{route('admin.booking.index')}}" class="small-box-footer">More info <i
+            <a href="{{route('admin.booking.index')}}" class="small-box-footer">{{__('MOREINFO')}} <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
@@ -26,12 +26,12 @@
             <div class="inner">
                 <h3>{{$countCate}}</h3>
 
-                <p>Category</p>
+                <p>{{__('CATEGORY')}}</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="{{route('admin.category.index')}}" class="small-box-footer">More info <i
+            <a href="{{route('admin.category.index')}}" class="small-box-footer">{{__('MOREINFO')}} <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
@@ -41,12 +41,12 @@
             <div class="inner">
                 <h3>{{$countRoom}}</h3>
 
-                <p>Room</p>
+                <p>{{__('ROOM')}}</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="{{route('admin.room.index')}}" class="small-box-footer">More info <i
+            <a href="{{route('admin.room.index')}}" class="small-box-footer">{{__('MOREINFO')}} <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
@@ -57,12 +57,12 @@
             <div class="inner">
                 <h3>{{$countCustomer}}</h3>
 
-                <p>Customer</p>
+                <p>{{__('CUSTOMER')}}</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person"></i>
             </div>
-            <a href="{{route('admin.customer.index')}}" class="small-box-footer">More info <i
+            <a href="{{route('admin.customer.index')}}" class="small-box-footer">{{__('MOREINFO')}} <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>

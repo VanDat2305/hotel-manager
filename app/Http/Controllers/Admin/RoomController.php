@@ -20,13 +20,13 @@ class RoomController extends Controller
     }
     public function index()
     {
-        $this->v['title'] = 'List room';
+        $this->v['title'] = __('List room');
         $this->v['rooms'] = Room::paginate(config('custom.limit_page.room'));
         return view('admin.room.index',$this->v);
     }
     public function create()
     {
-        $this->v['title'] = 'Add room';
+        $this->v['title'] = __('Add room');
         $this->v['categories'] = Category::where('status',config('custom.category_status.active'))->get();
         return view('admin.room.add', $this->v);
     }
@@ -41,24 +41,20 @@ class RoomController extends Controller
         $data['password'] = Hash::make($request->input('password'));
         $res = $model->create($data);
         if ($res) {
-            Alert::success('Thêm mới thành công');
+            Alert::success(__('messages.add.success'));
         } else {
-            Alert::error('Thêm mới thất bại');
+            Alert::error(__('messages.add.failed'));
         }
         return redirect()->route('admin.room.index');
     }
-    public function show($id)
-    {
-        //
-    }
     public function edit($id)
     {
-        $this->v['title'] = 'Edit room';
+        $this->v['title'] = __('Edit room');
         $this->v['categories'] = Category::where('status',config('custom.category_status.active'))->get();
         $this->v['room'] = Room::find($id);
         return view('admin.room.edit', $this->v);
     }
-    public function update(Request $request, $id)
+    public function update(RoomRequest $request, $id)
     {
         $model = Room::find($id);
         $data = [];
@@ -69,9 +65,9 @@ class RoomController extends Controller
         $data['password'] = Hash::make($request->input('password'));
         $res = $model->update($data);
         if ($res) {
-            Alert::success('Sửa thành công');
+            Alert::success(__('messages.update.success'));
         } else {
-            Alert::error('Sửa thất bại');
+            Alert::error(__('messages.update.faild'));
         }
         return redirect()->route('admin.room.index');
     }
@@ -82,10 +78,10 @@ class RoomController extends Controller
         if ($model!=null && $booking == false) {
             $model->delete();
             $success = true;
-            $message = "Xóa thành công";
+            $message = __('messages.delete.success');
         } else {
             $success =  false;
-            $message = "Xóa thất bại ";
+            $message = __('messages.delete.faild');
         }
         return response()->json([
             'success'=> $success,
@@ -99,12 +95,12 @@ class RoomController extends Controller
         $status = $model->status;
         $model->status = ($status == config('custom.room_status_text.active')) ? '0':'1';
         $model->save();
-        $message = 'Update thành công';
+        $message = __('messages.update.success');
         $success = true;
         return response()->json([
             'success'=>$success,
             'message' => $message,
-            'data' => $model->status,
+            'data' => __($model->status),
         ]);
     }
     public function uploadFiles($file)

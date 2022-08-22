@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class UserRequest extends FormRequest
 {
@@ -55,17 +56,17 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => "Mời bạn điền tên",
-            'email.required' => "Mời bạn nhập email",
-            'email.email' => "Email không đúng định dạng",
-            'email.unique' => "Email đã tồn tại",
-            'phone.required' => "Mời bạn nhập số điện thoại",
-            'phone.min' => "Số điện thoại không đúng",
-            'password.required' => "Mời bạn nhập mật khẩu",
-            'password.min' => "Mật khẩu không đủ 8 ký tự",
-            're-password.required' => "Mời bạn nhập xác nhập mật khẩu",
-            're-password.same' => "Mật khẩu không khớp",
-            'image.image' => 'Ảnh không đúng định dạng '
+            'name.required' => Lang::get('messages.name.required'),
+            'email.required' => Lang::get('messages.email.required'),
+            'email.email' => Lang::get('messages.email.email'),
+            'email.unique' => Lang::get('messages.email.required'),
+            'phone.required' => Lang::get('messages.phone.required'),
+            'phone.min' => Lang::get('messages.phone.min'),
+            'password.required' => Lang::get('messages.password.required'),
+            'password.min' => Lang::get('messages.password.min'),
+            're-password.required' => Lang::get('messages.re-password.required'),
+            're-password.same' => Lang::get('messages.re-password.same'),
+            'image.image' => Lang::get('messages.image.image')
 
         ];
     }

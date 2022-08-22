@@ -11,15 +11,14 @@ $(document).ready(function () {
     var model = arrayUrl[arrayUrl.length - 1];
     var thisBtn = $(_this.activeElement);
     var id = thisBtn.val();
-    var tr = thisBtn.parent().parent(); // console.log(thisBtn.val());
-
+    var tr = thisBtn.parent().parent();
     Swal.fire({
       icon: 'warning',
-      text: 'Bạn có muốn xóa không?',
+      text: 'You want to delete?',
       showCancelButton: true,
-      confirmButtonText: 'Có',
+      confirmButtonText: 'Yes',
       confirmButtonColor: '#e3342f',
-      cancelButtonText: 'Không'
+      cancelButtonText: 'No'
     }).then(function (result) {
       if (result.isConfirmed) {
         // cách 1 
@@ -67,11 +66,11 @@ $(document).ready(function () {
     var id = thisBtn.data('id');
     Swal.fire({
       icon: 'warning',
-      text: 'Bạn có muốn cập nhật trạng thái không?',
+      text: 'You want to update?',
       showCancelButton: true,
-      confirmButtonText: 'Có',
+      confirmButtonText: 'Yes',
       confirmButtonColor: '#e3342f',
-      cancelButtonText: 'Không'
+      cancelButtonText: 'No'
     }).then(function (result) {
       if (result.isConfirmed) {
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -92,12 +91,12 @@ $(document).ready(function () {
                 showConfirmButton: false,
                 timer: 1500
               }, setTimeout(function () {
-                if (results.data == 'block') {
+                if (results.data == 'block' || results.data == 'Khóa') {
                   thisBtn.attr('class', 'btn btn-danger btn-sm btn-update');
-                  thisBtn.html('block');
+                  thisBtn.html(results.data);
                 } else {
                   thisBtn.attr('class', 'btn btn-success btn-sm btn-update');
-                  thisBtn.html('active');
+                  thisBtn.html(results.data);
                 }
               }, 0));
             } else {

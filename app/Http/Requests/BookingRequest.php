@@ -45,17 +45,17 @@ class BookingRequest extends FormRequest
     }
     public function messages(){
         return [
-            'firstname.required' => 'Mời bạn nhập firstname',
-            'lastname.required' => 'Mời bạn nhập lastname',
-            'email.required' => 'Mời bạn nhập email',
-            'email.email'=> 'Email không đúng định dạng',
-            'phone.required' => 'Mời bạn nhập số điện thoại',
-            'phone.min' => 'Số điện thoại không đủ 11 số',
-            'phone.numeric'=> 'Mời nhập đúng định dạng',
-            'checkin.required' => 'Mời chọn ngày checkin',
-            'checkout.required' => 'Mời chọn ngày checkout',
-            'checkout.different' => 'Ngày checkout trung ngày checkin',
-            'address.required' => 'Mời nhập địa chỉ'
+            'firstname.required' => __('messages.firstname.required'),
+            'lastname.required' => __('messages.lastname.required'),
+            'email.required' => __('messages.email.required'),
+            'email.email'=> __('messages.email.email'),
+            'phone.required' => __('messages.phone.required'),
+            'phone.min' => __('messages.phone.min'),
+            'phone.numeric'=> __('messages.phone.numeric'),
+            'checkin.required' => __('messages.checkin.required'),
+            'checkout.required' => __('messages.checkout.required'),
+            'checkout.different' => __('messages.checkout.different'),
+            'address.required' => __('messages.address.required')
         ]; 
     }
 }

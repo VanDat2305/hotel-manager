@@ -14,7 +14,7 @@
         <div class="col-7">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Add booking</h3>
+                    <h3 class="card-title">{{__('BOOKING')}}</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -25,9 +25,9 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="name">Firstname </label>
+                                    <label for="name">{{__('Firstname')}}</label>
                                     <input type="text" class="form-control" name="firstname" id="name"
-                                        value="{{ old('firstname') }}" placeholder="Enter firstname">
+                                        value="{{ old('firstname') }}" placeholder="{{__('Enter firstname')}}">
                                 </div>
                                 @error('firstname')
                                     <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -41,9 +41,9 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="name">Lastname </label>
+                                    <label for="name">{{__('Lastname')}} </label>
                                     <input type="text" class="form-control" name="lastname" id="name"
-                                        value="{{ old('lastname') }}" placeholder="Enter lastname">
+                                        value="{{ old('lastname') }}" placeholder="{{__('Enter lastname')}} ">
                                 </div>
                                 @error('lastname')
                                     <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="Email">Email</label>
                             <input type="text" class="form-control" name="email" value="{{ old('email') }}"
-                                placeholder="Enter email">
+                                placeholder="{{__('Enter email')}}">
                         </div>
                         @error('email')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -71,9 +71,9 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="Phone">Phone</label>
+                            <label for="Phone">{{__('PHONE')}}</label>
                             <input type="text" class="form-control" name="phone" id="Phone"
-                                value="{{ old('phone') }}" placeholder="Enter Phone">
+                                value="{{ old('phone') }}" placeholder="{{__('Enter phone')}}">
                         </div>
                         @error('phone')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -86,7 +86,7 @@
                         @enderror
                         <div class="row">
                             <div class="form-group col-6">
-                                <label>Check In:</label>
+                                <label>{{__('CHECKIN')}}:</label>
                                 <div class="input-group date mb-2" id="checkin" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input" name="checkin"  value="{{old('checkin')}}"
                                         data-target="#checkin" />
@@ -107,7 +107,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-6">
-                                <label>Check Out:</label>
+                                <label>{{__('CHECKOUT')}}:</label>
                                 <div class="input-group date mb-2" id="checkout" data-target-input="nearest">
                                     <input type="text" name="checkout" class="form-control datetimepicker-input" value="{{old('checkout')}}"
                                         data-target="#checkout" />
@@ -129,9 +129,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">{{__('ADDRESS')}}</label>
                             <input type="text" class="form-control" name="address" id="address"
-                                value="{{ old('address') }}" placeholder="Enter address">
+                                value="{{ old('address') }}" placeholder="{{__('Enter address')}}">
                         </div>
                         @error('address')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -143,13 +143,13 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="">Infomation</label>
+                            <label for="">{{__('INFORMATION')}}</label>
                             <textarea name="infomation" class="form-control" id="" cols="30" rows="5"></textarea>
                         </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{__('SAVE')}}</button>
                     </div>
                 </form>
             </div>
@@ -158,8 +158,8 @@
             <div class="card">
                 <img class="card-img-top" src="{{ Storage::url($room->image) }}" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Room: {{ $room->name }}</h4>
-                    <p class="card-text">{{ number_format($room->price, 0, '.', ',') }} VND/day</p>
+                    <h4 class="card-title">{{__('ROOM')}}: {{ $room->name }}</h4>
+                    <p class="card-text">{{ number_format($room->price, 0, '.', ',') }} VND/{{__('DAY')}}</p>
                 </div>
             </div>
         </div>
@@ -186,6 +186,7 @@
             });
             $("#checkout").datetimepicker({
                 minDate: new Date(),
+                format : 
                 // disabledDates:datesForDisable,
                 icons: {
                     time: "far fa-clock"

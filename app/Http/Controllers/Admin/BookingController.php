@@ -20,7 +20,7 @@ class BookingController extends Controller
     }
     public function index()
     {
-        $this->v['title'] = 'List booking';
+        $this->v['title'] = __('List booking');
         $this->v['bookings'] = Booking::paginate(10);
 
         return view('admin.booking.index', $this->v);
@@ -28,7 +28,7 @@ class BookingController extends Controller
     public function create($room_id)
     {
         $this->v['room'] = Room::find($room_id);
-        $this->v['title'] = 'Add booking';
+        $this->v['title'] = __('BOOKING');
         // $this->v['dateBooked'] = $model->getAllDay($room_id);
         return view('admin.booking.add', $this->v);
     }
@@ -37,14 +37,14 @@ class BookingController extends Controller
         $model = new Booking();
         $checkDate = $model->getCheckBooked($room_id,$request);
         if (strtotime($request->input('checkin')) > strtotime($request->input('checkout'))) {
-            Alert::error('Ngày checkout phải sau ngày checkin');
+            Alert::error(__('messages.booking.faild'));
         }elseif ($checkDate) {
-            Alert::error('Phòng đã được đặt trong khoảng thời gian này');
+            Alert::error(__('messages.booking.already'));
         }else{
             if ($model->addBooking($request,$room_id)) {
-                Alert::success('Đặt phòng thành công');
+                Alert::success(__('messages.booking.success'));
             }else{
-                Alert::error('Đặt phòng thất bại');
+                Alert::error(__('messages.booking.faild'));
             }
             return redirect()->route('admin.booking.index');
         }
@@ -52,7 +52,7 @@ class BookingController extends Controller
     }
     public function show($id)
     {
-        $this->v['title'] = 'Booking Detail';
+        $this->v['title'] = __('Booking Detail');
         $this->v['booking'] = Booking::find($id);
         return view('admin.booking.detail', $this->v);
     }
@@ -62,10 +62,10 @@ class BookingController extends Controller
         if ($model!=null ) {
             $model->delete();
             $success = true;
-            $message = "Xóa thành công";
+            $message = __('messages.delete.success');
         } else {
             $success =  false;
-            $message = "Xóa thất bại ";
+            $message = __('messages.delete.faild');
         }
         return response()->json([
             'success'=> $success,
@@ -74,7 +74,7 @@ class BookingController extends Controller
     }
     public function listRoom()
     {
-        $this->v['title'] = 'List room';
+        $this->v['title'] = __('List room');
         $this->v['rooms'] = Room::paginate(config('custom.limit_page.room-booking'));
         return view('admin.booking.listRoom', $this->v);
     }
@@ -83,12 +83,13 @@ class BookingController extends Controller
         $model = Booking::findOrFail($id);
         $model->status = $request->status;
         $model->save();
-        $message = 'Update thành công';
+        $message = __('messages.update.success');
         $success = true;
         return response()->json([
             'success'=>$success,
             'message' => $message,
             'data' => $model->status,
+            'language' => __($model->status)
         ]);
 
     }

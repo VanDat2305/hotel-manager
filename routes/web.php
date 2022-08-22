@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\URL;
 | contains the "web" middleware group. Now create something great!
 |
 */
-if (App::environment('production')) {
-    URL::forceScheme('https');
-}
+
 
 Route::get('/', function () {
-    // alert()->success('It worked!', 'The form was submitted');
     return view('welcome');
 })->name('client.home');
+Route::get('change-language/{language}', 'LanguageController@changeLanguage')->name('change-language');
 Route::get('/admin/login', 'Auth\LoginAdminController@getFormLogin')->name('formLoginAdmin');
 Route::get('/admin/logout', 'Auth\LoginAdminController@logOut')->name('logOut');
 Route::post('/admin/login', 'Auth\LoginAdminController@postLogin')->name('postLoginAdmin');

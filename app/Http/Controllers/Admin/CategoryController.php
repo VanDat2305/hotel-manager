@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -19,13 +20,13 @@ class CategoryController extends Controller
     }
     public function index()
     {
-        $this->v['title'] = 'List category';
+        $this->v['title'] = __('List category');
         $this->v['categories'] = Category::paginate(config('custom.limit_page.category'));
         return view('admin.category.index', $this->v);
     }
     public function create()
     {
-        $this->v['title'] = 'Add category';
+        $this->v['title'] = __('Add category');
         return view('admin.category.add', $this->v);
     }
     public function store(Request $request)
@@ -34,8 +35,8 @@ class CategoryController extends Controller
             'name' => "required | unique:categories"
         ];
         $message = [
-            'name.required' => "Bạn hãy nhập tên",
-            'name.unique'=> 'Tên đã tồn tại'
+            'name.required' => Lang::get('messages.name.required'),
+            'name.unique'=> Lang::get('messages.name.unique')
         ];
         $validator = Validator::make($request->input(),$rules,$message);
         if ($validator->fails()) {
@@ -49,7 +50,8 @@ class CategoryController extends Controller
             $res = Category::create($data);
             return response()->json([
                 'status' => true,
-                'data' => $res
+                'data' => $res,
+                'message' => __('messages.add.success')
             ]);
         }
        
@@ -60,8 +62,8 @@ class CategoryController extends Controller
             'name' => "required | unique:categories,name,$id"
         ];
         $message = [
-            'name.required' => "Bạn hãy nhập tên",
-            'name.unique'=> 'Tên đã tồn tại'
+            'name.required' => Lang::get("messages.name.required"),
+            'name.unique'=> Lang::get('messages.name.unique')
         ];
         $validator = Validator::make($request->input(),$rules,$message);
         if ($validator->fails()) {
@@ -77,7 +79,8 @@ class CategoryController extends Controller
             $res = $model->update($data);
             return response()->json([
                 'status' => true,
-                'data' => $res
+                'data' => $res,
+                'message' => __('messages.update.success')
             ]);
         }
     }
@@ -88,10 +91,10 @@ class CategoryController extends Controller
         if ($model!=null && $room == false) {
             $model->delete();
             $success = true;
-            $message = "Xóa thành công";
+            $message = __('messages.delete.success');
         } else {
             $success =  false;
-            $message = "Xóa thất bại ";
+            $message = __('messages.delete.failed');
         }
         return response()->json([
             'success'=> $success,
@@ -108,12 +111,12 @@ class CategoryController extends Controller
             $model->status = '1';
         }
         $model->save();
-        $message = 'Update thành công';
+        $message = __('messages.update.success');
         $success = true;
         return response()->json([
             'success'=>$success,
             'message' => $message,
-            'data' => $model->status,
+            'data' => __($model->status),
         ]);
 
     }
