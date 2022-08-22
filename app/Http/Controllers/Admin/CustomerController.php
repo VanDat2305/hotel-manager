@@ -23,32 +23,16 @@ class CustomerController extends Controller
     {
         $this->v['title'] = 'List customer';
     }
-    public function store(Request $request)
-    {
-        //
-    }
-    public function show($id)
-    {
-        //
-    }
-    public function edit($id)
-    {
-        //
-    }
-    public function update(Request $request, $id)
-    {
-        //
-    }
     public function destroy($id)
     {
         $model = Customer::findOrFail($id);
         if ($model != null) {
             $model->delete();
             $success = true;
-            $message = "Xóa thành công";
+            $message = __('messages.delete.success');
         } else {
             $success =  false;
-            $message = "Xóa thất bại";
+            $message = __('messages.delete.faild');
         }
         return response()->json([
             'status' => true,
@@ -66,12 +50,12 @@ class CustomerController extends Controller
             $model->status = '1';
         }
         $model->save();
-        $message = 'Update thành công';
+        $message = __('messages.update.success');
         $success = true;
         return response()->json([
             'success'=>$success,
             'message' => $message,
-            'data' => $model->status,
+            'data' => __($model->status),
         ]);
 
     }

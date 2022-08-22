@@ -22,7 +22,7 @@
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                <input class="form-control form-control-sidebar" type="search" placeholder="{{__('SEARCH')}}"
                     aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
@@ -40,7 +40,7 @@
                     <a href="{{route('admin.dashboard')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            {{__('DASHBOARD')}}
                         </p>
                     </a>
                 </li>
@@ -48,7 +48,7 @@
                     <a href="{{route('admin.category.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-clipboard"></i>
                         <p>
-                            Categories
+                            {{__('CATEGORY')}} 
                         </p>
                     </a>
                 </li>
@@ -56,7 +56,7 @@
                     <a href="{{route('admin.room.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Rooms
+                            {{__('ROOM')}}  
                         </p>
                     </a>
                 </li>
@@ -64,7 +64,7 @@
                     <a href="{{route('admin.booking.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-calendar-check"></i>
                         <p>
-                            Booking
+                            {{__('BOOKING')}}  
                         </p>
                     </a>
                 </li>
@@ -72,7 +72,7 @@
                     <a href="{{ route('admin.user.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
-                            User
+                            {{__('USER')}}  
                         </p>
                     </a>
                 </li>
@@ -80,7 +80,7 @@
                     <a href="{{route('admin.customer.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Customer
+                            {{__('CUSTOMER')}}  
                         </p>
                     </a>
                 </li>
@@ -89,7 +89,7 @@
                     <a href="{{ route('logOut') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            Đăng xuất
+                            {{__('LOGOUT')}} 
                         </p>
                     </a>
                 </li>

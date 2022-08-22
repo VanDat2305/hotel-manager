@@ -7,7 +7,7 @@
         <div class="col-6">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">{{ $title }}</h3>
+                    <h3 class="card-title">{{ __($title) }}</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -17,7 +17,7 @@
                         <div class="form-group">
                             <label for="Email">Email</label>
                             <input type="text" class="form-control" name="email" value="{{ $user->email }}"
-                                placeholder="Enter email">
+                                placeholder="{{__('Enter email')}}">
                         </div>
                         @error('email')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -29,9 +29,9 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">{{__('NAME')}}</label>
                             <input type="text" class="form-control" name="name" id="name"
-                                value="{{ $user->name }}" placeholder="Enter name">
+                                value="{{ $user->name }}" placeholder="{{__('Enter Name')}}">
                         </div>
                         @error('name')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -43,9 +43,9 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="Phone">Phone</label>
+                            <label for="Phone">{{__('PHONE')}}</label>
                             <input type="text" class="form-control" name="phone" id="Phone"
-                                value="{{ $user->phone }}" placeholder="Enter Phone">
+                                value="{{ $user->phone }}" placeholder="{{__('Enter phone')}}">
                         </div>
                         @error('phone')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -57,9 +57,9 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">{{__('PASSWORD')}}</label>
                             <input type="password" class="form-control" name="password" id="password"
-                                placeholder="Password">
+                                placeholder="{{__('Enter password')}}">
                         </div>
                         @error('password')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -71,9 +71,9 @@
                             </div>
                         @enderror
                         <div class="form-group">
-                            <label for="password">Confirm password</label>
+                            <label for="password">{{__('Confirm Password')}}</label>
                             <input type="password" class="form-control" name="re-password" id="password"
-                                placeholder="Password">
+                                placeholder="{{__('Enter password')}}">
                         </div>
                         @error('re-password')
                             <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
@@ -87,29 +87,29 @@
                        <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="">Status</label>
+                                <label for="">{{__('STATUS')}}</label>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" name="status" value="1"
                                         {{ $user->status == config('custom.user_status_text.active') ? 'checked' : '' }}
                                         id="checkbox">
-                                    <label class="form-check-label" for="checkbox">Active</label>
+                                    <label class="form-check-label" for="checkbox">{{__('active')}}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="">IsAdmin</label>
+                                <label for="">{{__('IsAdmin')}}</label>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" name="role_id" value="1"
                                         {{ $user->role_id == config('custom.user_roles.admin') ? 'checked' : '' }}
                                         id="checkbox">
-                                    <label class="form-check-label" for="checkbox">Active</label>
+                                    <label class="form-check-label" for="checkbox">{{__('active')}}</label>
                                 </div>
                             </div>
                         </div>
                        </div>
                         <div class="form-group">
-                            <label class="col-md-3 col-sm-4 control-label">Image</label>
+                            <label class="col-md-3 col-sm-4 control-label">{{__('IMAGE')}}</label>
                             <div class="col-md-9 col-sm-8">
                                 <div class="row">
                                     <div class="col-xs-6">
@@ -138,7 +138,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{__('SAVE')}}</button>
                     </div>
                 </form>
             </div>

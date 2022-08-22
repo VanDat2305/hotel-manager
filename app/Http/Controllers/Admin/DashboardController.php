@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $this->v = [];
     }
     public function index(){
-        $this->v['title'] = 'Dashboard';
+        $this->v['title'] = __('DASHBOARD');
         $this->v['countCate'] = Category::active()->get()->count() ;
         $this->v['countRoom'] = Room::active()->get()->count() ;
         $this->v['countCustomer'] = Customer::active()->get()->count() ;

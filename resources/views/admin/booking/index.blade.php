@@ -11,7 +11,7 @@
     <div class="row">
         <div class="card col-12">
             <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">{{ __($title) }}</h3>
                 <p class="">
                 </p>
             </div>
@@ -24,12 +24,12 @@
                         </tr>
                         <tr>
                             <th>#</th>
-                            <th>Fullname</th>
-                            <th>Phone</th>
-                            <th>Room</th>
-                            <th>Checkin</th>
-                            <th>Checkout</th>
-                            <th>Status</th>
+                            <th>{{__('Fullname')}}</th>
+                            <th>{{__('PHONE')}}</th>
+                            <th>{{__('ROOM')}}</th>
+                            <th>{{__('CHECKIN')}}</th>
+                            <th>{{__('CHECKOUT')}}</th>
+                            <th>{{__('STATUS')}}</th>
                             <th><a href="{{ route('admin.booking.listRoom') }}"><i class="fa fa-plus"></i></a></th>
                         </tr>
                     </thead>
@@ -73,7 +73,7 @@
                                     @endphp
                                     <a class="btn btn-second {{ $bookingStatus }} btn-sm dropdown-toggle" style="width: 100%" href="#"
                                         role="button" data-toggle="dropdown" aria-expanded="false">
-                                        {{ $booking->status }}
+                                        {{ __($booking->status) }}
                                     </a>
                                     <div
                                         class="dropdown-menu {{ $booking->status == config('custom.booking_status_text.Unsuccessful') ? 'd-none' : '' }}">
@@ -81,7 +81,7 @@
                                         @foreach (config('custom.booking_status') as $key => $status)
                                             @if ($key != $booking->status && $status > $active)
                                                 <a class="dropdown-item btn-status" data-id='{{ $booking->id }}'
-                                                    data-status='{{ $status }}'>{{ $key }}</a>
+                                                    data-status='{{ $status }}'>{{ __($key) }}</a>
                                             @endif
                                         @endforeach
 
@@ -122,11 +122,11 @@
             var status_id = thisBtn.data('status');
             Swal.fire({
                 icon: 'warning',
-                text: 'Bạn có muốn cập nhật trạng thái không?',
+                text: 'You want to change status?',
                 showCancelButton: true,
-                confirmButtonText: 'Có',
+                confirmButtonText: 'Yes',
                 confirmButtonColor: '#e3342f',
-                cancelButtonText: 'Không'
+                cancelButtonText: 'No'
             }).then(function(result) {
                 if (result.isConfirmed) {
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -153,31 +153,24 @@
                                     $divChange = thisBtn.parent().parent().children(":first");
                                     switch (results.data) {
                                         case 'Operational':
-                                            $divChange.text(results.data);
+                                            $divChange.text(results.language);
                                             $divChange.attr('class','btn  bg-navy btn-sm btn-status dropdown-toggle')
                                             break;
                                         case 'Completed':
-                                            $divChange.text(results.data);
+                                            $divChange.text(results.language);
                                             $divChange.attr('class','btn  bg-purple btn-sm btn-status dropdown-toggle')
                                             break;
                                         case 'Cancelled':
-                                            $divChange.text(results.data);
+                                            $divChange.text(results.language);
                                             $divChange.attr('class','btn  bg-fuchsia btn-sm btn-status dropdown-toggle')
                                             break;
                                         case 'Unsuccessful':
-                                            $divChange.text(results.data);
+                                            $divChange.text(results.language);
                                             $divChange.attr('class','btn  bg-maroon btn-sm btn-status dropdown-toggle')
                                             break;
                                         default:
                                             break;
                                     }
-                                    //    if(results.data == 'block'){
-                                    //     thisBtn.attr('class','btn btn-danger btn-sm btn-update')
-                                    //     thisBtn.html('block')
-                                    //    }else{
-                                    //     thisBtn.attr('class','btn btn-success btn-sm btn-update')
-                                    //     thisBtn.html('active')
-                                    //    }
                                 }, 0));
                             } else {
                                 Swal.fire({

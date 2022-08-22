@@ -42,9 +42,9 @@ class UserController extends Controller
         };
         $res = $model->create($data);
         if ($res) {
-            Alert::success('Thêm mới thành công');
+            Alert::success(__('messages.add.success'));
         } else {
-            Alert::error('Thêm mới thất bại');
+            Alert::error(__('messages.add.failed'));
         }
         return redirect()->route('admin.user.index');
     }
@@ -84,9 +84,9 @@ class UserController extends Controller
         $model->update_role($id,$data['role_id']);
         $res = $model->update($data);
         if ($res) {
-            Alert::success('Sửa thành công');
+            Alert::success(__('messages.update.success'));
         } else {
-            Alert::error('Sửa thất bại');
+            Alert::error(__('messages.update.faild'));
         }
         return redirect()->route('admin.user.index');
     }
@@ -99,10 +99,10 @@ class UserController extends Controller
         if ($model!=null && $cate == false) {
             $model->delete();
             $success = true;
-            $message = "Xóa thành công";
+            $message = __('messages.delete.success');
         } else {
             $success =  false;
-            $message = "Xóa thất bại";
+            $message = __('messages.add.failed');
         }
         return response()->json([
             'success'=> $success,
@@ -115,12 +115,12 @@ class UserController extends Controller
         $status = $model->status;
         $model->status = $status == config('custom.user_status_text.active') ? '0' : '1';
         $model->save();
-        $message = 'Update thành công';
+        $message = __('messages.update.success');
         $success = true;
         return response()->json([
             'success'=>$success,
             'message' => $message,
-            'data' => $model->status,
+            'data' => __($model->status),
         ]);
 
     }

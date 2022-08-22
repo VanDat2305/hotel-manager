@@ -11,7 +11,7 @@
     <div class="row">
         <div class="card col-12">
             <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">{{ __($title) }}</h3>
                 <p class="">
                 </p>
             </div>
@@ -21,54 +21,54 @@
 
                     <body>
                         <tr>
-                            <th>Fullname: </th>
+                            <th>{{__('Fullname')}}: </th>
                             <td>{{ $booking->fullname }}</td>
                         </tr>
                         <tr>
-                            <th>Email: </th>
+                            <th>{{__('Email')}}: </th>
                             <td>{{ $booking->customer->email }}</td>
                         </tr>
                         <tr>
-                            <th>Phone: </th>
+                            <th>{{__('PHONE')}}: </th>
                             <td>{{ $booking->customer->phone }}</td>
                         </tr>
                         <tr>
-                            <th>Address: </th>
+                            <th>{{__('ADDRESS')}}: </th>
                             <td>{{ $booking->customer->address }}</td>
                         </tr>
                         <tr>
-                            <th>Room: </th>
+                            <th>{{__('NAMEROOM')}}: </th>
                             <td>{{ $booking->room->name }}</td>
                         </tr>
                         <tr>
-                            <th>Check in: </th>
+                            <th>{{__('CHECKIN')}}: </th>
                             <td>{{ $booking->check_in }}</td>
                         </tr>
                         <tr>
-                            <th>Check out: </th>
+                            <th>{{__('CHECKOUT')}}: </th>
                             <td>{{ $booking->check_out }}</td>
                         </tr>
                         <tr>
-                            <th>Infomation: </th>
+                            <th>{{__('INFORMATION')}}: </th>
                             <td>{{ $booking->infomation }}</td>
                         </tr>
                         <tr>
-                            <th>sub_price: </th>
+                            <th>{{__('SUBPRICE')}}: </th>
                             <td>{{ number_format($booking->sub_price, 0, '.', ',') }} VND</td>
                         </tr>
                         <tr>
-                            <th>total_price: </th>
+                            <th>{{__('TOTALPRICE')}}: </th>
                             <td>{{ number_format($booking->sub_price, 0, '.', ',') }} VND</td>
                         </tr>
                         <tr>
-                            <th>Status </th>
-                            <td>{{ $booking->status }}</td>
+                            <th>{{__('STATUS')}} </th>
+                            <td>{{ __($booking->status) }}</td>
                         </tr>
                     </body>
                 </table>
                 <div class="p-4">
-                    <a href="{{ route('admin.booking.index') }}" class="btn btn-primary">Back</a>
-                </div>
+                    <a href="{{ route('admin.booking.index') }}" class="btn btn-primary">{{ __('BACK')}}</a>
+                </div> 
             </div>
             <!-- /.card-body -->
         </div>

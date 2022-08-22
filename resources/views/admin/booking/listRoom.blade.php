@@ -11,7 +11,7 @@
     <div class="row">
         <div class="card col-12">
             <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">{{ __($title) }}</h3>
                 <p class="">
                 </p>
             </div>
@@ -27,7 +27,7 @@
                       <div class="row">
                         <h5 class="card-title pb-2">{{$room->name}}</h5>
                       </div>
-                        <a href="{{route('admin.booking.create',$room->id)}}" class="btn btn-primary">Booking</a>
+                        <a href="{{route('admin.booking.create',$room->id)}}" class="btn btn-primary">{{__('BOOKING')}}</a>
                     </div>
                   </div>
                    @endforeach

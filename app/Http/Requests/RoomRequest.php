@@ -35,7 +35,6 @@ class RoomRequest extends FormRequest
                 ];
                 break;
             case 'update':
-                dd($id);
                 $rules = [
                     'name' => 'required | unique:rooms,name,'.$id.',id',
                     'image' => ' image', 
@@ -50,12 +49,12 @@ class RoomRequest extends FormRequest
     }
     public function messages(){
         return [
-            'name.required' => 'Vui lòng điền tên',
-            'name.unique' => 'Tên đã tồn tại',
-            'price.required' => 'Vui lòng điền giá',
-            'image.required' => 'Vui lòng chọn ảnh',
-            'image.image' => 'Ảnh không đúng định dạng',
-            'description.required'=> 'Vui lòng điền mô tả'
+            'name.required' => __('messages.name.required'),
+            'name.unique' =>__('messages.name.unique'),
+            'price.required' => __('messages.price.required'),
+            'image.required' => __('messages.image.required'),
+            'image.image' => __('messages.image.image'),
+            'description.required'=> __('messages.description.required')
         ];
     }
 }
