@@ -1,0 +1,22 @@
+{
+  "name": "project-intern",
+  "description": "",
+  "main": "",
+  "authors": [
+    "'Vandat2305' <'datmv2002@gmail.com'>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "public/bower_components"
+  ],
+  "dependencies": {
+    "template-admin": "https://github.com/VanDat2305/template-admin.git"
+  }
+}
