@@ -6,6 +6,10 @@
     @parent
     <link rel="stylesheet"
         href="{{ asset('bower_components/template-admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('bower_components/template-admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('bower_components/template-admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('content')
     <div class="row">
@@ -19,17 +23,17 @@
             <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                     <thead>
-                        <tr>
+                        {{-- <tr>
                             <div>{{ $bookings->links() }}</div>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>#</th>
-                            <th>{{__('Fullname')}}</th>
-                            <th>{{__('PHONE')}}</th>
-                            <th>{{__('ROOM')}}</th>
-                            <th>{{__('CHECKIN')}}</th>
-                            <th>{{__('CHECKOUT')}}</th>
-                            <th>{{__('STATUS')}}</th>
+                            <th>{{ __('Fullname') }}</th>
+                            <th>{{ __('PHONE') }}</th>
+                            <th>{{ __('ROOM') }}</th>
+                            <th>{{ __('CHECKIN') }}</th>
+                            <th>{{ __('CHECKOUT') }}</th>
+                            <th>{{ __('STATUS') }}</th>
                             <th><a href="{{ route('admin.booking.listRoom') }}"><i class="fa fa-plus"></i></a></th>
                         </tr>
                     </thead>
@@ -71,8 +75,9 @@
                                                 break;
                                         }
                                     @endphp
-                                    <a class="btn btn-second {{ $bookingStatus }} btn-sm dropdown-toggle" style="width: 100%" href="#"
-                                        role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <a class="btn btn-second {{ $bookingStatus }} btn-sm dropdown-toggle"
+                                        style="width: 100%" href="#" role="button" data-toggle="dropdown"
+                                        aria-expanded="false">
                                         {{ __($booking->status) }}
                                     </a>
                                     <div
@@ -99,10 +104,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <div class="d-felx justify-content-center">
-                            </div>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -112,6 +113,40 @@
 @endsection
 @section('script')
     @parent
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('bower_components/template-admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('bower_components/template-admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.print.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}">
+    </script>
+    <script>
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": true,
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    </script>
     <script src="{{ asset('js/remove-ajax.js') }}"></script>
     <script>
         $('.btn-status').click(function() {
@@ -139,7 +174,7 @@
                             "status": status_id,
                         },
                         success: function success(results) {
-                            
+
                             if (results.success === true) {
                                 Swal.fire({
                                     title: 'Success',
@@ -149,24 +184,34 @@
                                     showConfirmButton: false,
                                     timer: 1500
                                 }, setTimeout(function() {
-                                    thisBtn.attr('class','dropdown-item btn-status d-none');
-                                    $divChange = thisBtn.parent().parent().children(":first");
+                                    thisBtn.attr('class',
+                                        'dropdown-item btn-status d-none');
+                                    $divChange = thisBtn.parent().parent().children(
+                                        ":first");
                                     switch (results.data) {
                                         case 'Operational':
                                             $divChange.text(results.language);
-                                            $divChange.attr('class','btn  bg-navy btn-sm btn-status dropdown-toggle')
+                                            $divChange.attr('class',
+                                                'btn  bg-navy btn-sm btn-status dropdown-toggle'
+                                                )
                                             break;
                                         case 'Completed':
                                             $divChange.text(results.language);
-                                            $divChange.attr('class','btn  bg-purple btn-sm btn-status dropdown-toggle')
+                                            $divChange.attr('class',
+                                                'btn  bg-purple btn-sm btn-status dropdown-toggle'
+                                                )
                                             break;
                                         case 'Cancelled':
                                             $divChange.text(results.language);
-                                            $divChange.attr('class','btn  bg-fuchsia btn-sm btn-status dropdown-toggle')
+                                            $divChange.attr('class',
+                                                'btn  bg-fuchsia btn-sm btn-status dropdown-toggle'
+                                                )
                                             break;
                                         case 'Unsuccessful':
                                             $divChange.text(results.language);
-                                            $divChange.attr('class','btn  bg-maroon btn-sm btn-status dropdown-toggle')
+                                            $divChange.attr('class',
+                                                'btn  bg-maroon btn-sm btn-status dropdown-toggle'
+                                                )
                                             break;
                                         default:
                                             break;

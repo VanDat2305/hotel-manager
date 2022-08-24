@@ -6,6 +6,10 @@
     @parent
     <link rel="stylesheet"
         href="{{ asset('bower_components/template-admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('bower_components/template-admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('bower_components/template-admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('content')
     <div class="row">
@@ -19,14 +23,14 @@
             <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                     <thead>
-                        <tr>
+                        {{-- <tr>
                             <div>{{ $categories->links() }}</div>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>#</th>
-                            <th>{{__('NAME')}}</th>
-                            <th>{{__('AUTHOR')}}</th>
-                            <th>{{__('STATUS')}}</th>
+                            <th>{{ __('NAME') }}</th>
+                            <th>{{ __('AUTHOR') }}</th>
+                            <th>{{ __('STATUS') }}</th>
                             <th>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#modal-default">
@@ -43,8 +47,9 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->user->name }}</td>
                                 <td>
-                                    <button class="btn {{$category->status == config('custom.category_status_text.active') ? 'btn-success' :'btn-danger'}} btn-sm btn-update"
-                                            data-id="{{ $category->id }}">{{ __($category->status) }}</button>
+                                    <button
+                                        class="btn {{ $category->status == config('custom.category_status_text.active') ? 'btn-success' : 'btn-danger' }} btn-sm btn-update"
+                                        data-id="{{ $category->id }}">{{ __($category->status) }}</button>
                                 <td>
                                     <button class="btn btn-primary btn-sm btn-modal-edit" data-toggle="modal"
                                         data-target="#modal-edit" data-name="{{ $category->name }}"
@@ -54,11 +59,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <div class="d-felx justify-content-center">
-
-                            </div>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -69,15 +69,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{__('Add category')}}</h4>
+                    <h4 class="modal-title">{{ __('Add category') }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="Name">{{__('NAME')}}</label>
-                        <input type="text" class="form-control" name="name" id="nameInput" placeholder="{{__('Enter Name')}}">
+                        <label for="Name">{{ __('NAME') }}</label>
+                        <input type="text" class="form-control" name="name" id="nameInput"
+                            placeholder="{{ __('Enter Name') }}">
                     </div>
                     <div class="alert alert-danger alert-dismissible fade  p-1 " id="message" role="alert">
                         <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
@@ -88,7 +89,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-                    <button type="button" class="btn btn-primary btn-create">{{__('SAVE')}}</button>
+                    <button type="button" class="btn btn-primary btn-create">{{ __('SAVE') }}</button>
                 </div>
             </div>
         </div>
@@ -97,15 +98,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{__('Edit category')}}</h4>
+                    <h4 class="modal-title">{{ __('Edit category') }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="Name">{{__('NAME')}}</label>
-                        <input type="text" class="form-control" name="nameEdit" id="nameEdit" placeholder="{{__('Enter Name')}}">
+                        <label for="Name">{{ __('NAME') }}</label>
+                        <input type="text" class="form-control" name="nameEdit" id="nameEdit"
+                            placeholder="{{ __('Enter Name') }}">
                     </div>
                     <input type="hidden" value="" id="idCate">
                     <div class="alert alert-danger alert-dismissible fade  p-1 " id="messageEdit" role="alert">
@@ -118,7 +120,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-                    <button type="button" class="btn btn-primary btn-edit">{{__('SAVE')}}</button>
+                    <button type="button" class="btn btn-primary btn-edit">{{ __('SAVE') }}</button>
                 </div>
             </div>
         </div>
@@ -126,6 +128,40 @@
 @endsection
 @section('script')
     @parent
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('bower_components/template-admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('bower_components/template-admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.print.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}">
+    </script>
+    <script>
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": true,
+            "paging": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    </script>
     <script src="{{ asset('js/remove-ajax.js') }}"></script>
     <script src="{{ asset('js/create-update-category.js') }}"></script>
 @endsection

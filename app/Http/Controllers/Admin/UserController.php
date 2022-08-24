@@ -22,7 +22,7 @@ class UserController extends Controller
     public function index()
     {
         $this->v['title'] = 'List user';
-        $this->v['users'] = User::paginate(config('custom.limit_page.user'));
+        $this->v['users'] = User::get();
         return view('admin.user.index', $this->v);
     }
 

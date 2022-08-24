@@ -6,6 +6,10 @@
     @parent
     <link rel="stylesheet"
         href="{{ asset('bower_components/template-admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('bower_components/template-admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('bower_components/template-admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('content')
     <div class="row">
@@ -24,11 +28,11 @@
                         </tr>
                         <tr>
                             <th>#</th>
-                            <th>{{__('Fullname')}}</th>
-                            <th>{{__('Email')}}</th>
-                            <th>{{__('PHONE')}}</th>
-                            <th>{{__('ADDRESS')}}</th>
-                            <th>{{__('STATUS')}}</th>
+                            <th>{{ __('Fullname') }}</th>
+                            <th>{{ __('Email') }}</th>
+                            <th>{{ __('PHONE') }}</th>
+                            <th>{{ __('ADDRESS') }}</th>
+                            <th>{{ __('STATUS') }}</th>
                             <th>
                                 {{-- <a href="{{ route('admin.customer.create') }}"><i class="fa fa-plus"></i></a> --}}
                             </th>
@@ -52,11 +56,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <div class="d-felx justify-content-center">
-
-                            </div>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -66,5 +65,39 @@
 @endsection
 @section('script')
     @parent
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('bower_components/template-admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('bower_components/template-admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.print.min.js') }}">
+    </script>
+    <script src="{{ asset('bower_components/template-admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}">
+    </script>
+    <script>
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": true,
+            "paging": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    </script>
     <script src="{{ asset('js/remove-ajax.js') }}"></script>
 @endsection
