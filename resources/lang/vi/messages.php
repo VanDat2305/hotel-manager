@@ -1,14 +1,14 @@
 <?php
 return [
-    'name.required' => "Mời bạn điền tên",
-    'email.required' => "Mời bạn nhập email",
+    'name.required' => "Hãy điền tên",
+    'email.required' => "Hãy nhập email",
     'email.email' => "Email không đúng định dạng",
     'email.unique' => "Email đã tồn tại",
-    'phone.required' => "Mời bạn nhập số điện thoại",
+    'phone.required' => "Hãy nhập số điện thoại",
     'phone.min' => "Số điện thoại không đúng",
-    'password.required' => "Mời bạn nhập mật khẩu",
+    'password.required' => "Hãy nhập mật khẩu",
     'password.min' => "Mật khẩu không đủ 8 ký tự",
-    're-password.required' => "Mời bạn nhập xác nhập mật khẩu",
+    're-password.required' => "Hãy nhập xác nhập mật khẩu",
     're-password.same' => "Mật khẩu không khớp",
     'image.image' => 'Ảnh không đúng định dạng ',
     'name.unique' => 'Tên đã tồn tại',
@@ -25,13 +25,14 @@ return [
     'booking.faild' => "Đặt phòng thất bại",
     'booking.already' => "Thời gian này đã được đặt",
     ///
-    'firstname.required' => 'Mời bạn nhập firstname',
-    'lastname.required' => 'Mời bạn nhập lastname',
-    'phone.required' => 'Mời bạn nhập số điện thoại',
+    'firstname.required' => 'Hãy nhập tên',
+    'lastname.required' => 'Hãy nhập họ',
+    'phone.required' => 'Hãy nhập số điện thoại',
     'phone.min' => 'Số điện thoại không đủ 11 số',
     'phone.numeric' => 'Mời nhập đúng định dạng',
-    'checkin.required' => 'Mời chọn ngày checkin',
-    'checkout.required' => 'Mời chọn ngày checkout',
-    'checkout.different' => 'Ngày checkout trung ngày checkin',
-    'address.required' => 'Mời nhập địa chỉ'
+    'checkin.required' => 'Mời chọn ngày nhận phòng',
+    'checkout.required' => 'Mời chọn ngày trả phòng',
+    'checkout.different' => 'Ngày trả trung ngày nhận',
+    'address.required' => 'Mời nhập địa chỉ',
+    "Add falid" => "Thêm mới thất bại "
 ];

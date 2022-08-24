@@ -62,5 +62,31 @@
     "Enter address" : "Nhập địa chỉ",
     "Enter firstname" : "Nhập tên",
     "Enter lastname" : "Nhập họ",
-    "DAY" : "Ngày"
+    "DAY" : "Ngày",
+    "HOME" : "Trang chủ",
+    "BLOG" : "Bài viết",
+    "CONTACTUS" : "Liên hệ",
+    "ABOUT" : "Về chúng tôi",
+    "AROUNDHOTEL" : "Vòng quanh khách sản",
+    "Enter checkin" : "Chọn ngày nhận phòng",
+    "Enter checkout" : "Chọn ngày trả phòng",
+    "Room detail" : "Chi tiết phòng",
+    "SignIn" : "Đăng nhập",
+    "Do not have an account" : "Chưa có tài khoản?",
+    "SignUp" : "Đăng ký",
+    "Remember Me" : "Ghi nhớ",
+    "Forgot Password" : "Quên mật khẩu",
+    "Email Address" : "Địa chỉ email",
+    "Already have an account" : "Đã có tài khoản",
+    "Account is logged in" : "Tài khoản đang đăng nhập",
+    "Sign In success with" : "Đăng nhập với tài khoản",
+    "Sign In success" : "Đăng nhập thành công",
+    "Email or password not true" : "Email hoặc password không đúng",
+    "Account not active" : "Tài khoản không kích hoạt",
+    "Add success" : "Thêm mới thành công",
+    "Showing" : "Hiện  ",
+    "of" : "  trên  ",
+    "results" : " kết quả"
+
+
 }

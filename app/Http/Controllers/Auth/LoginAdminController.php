@@ -20,7 +20,7 @@ class LoginAdminController extends Controller
     public function getFormLogin()
     {
         if (Auth::check()) {
-            Alert::success('Tài khoản đang đăng nhập');
+            Alert::success(__('Account is logged in'));
             return redirect()->route('admin.');
         }
         return view('admin.login');
@@ -30,7 +30,7 @@ class LoginAdminController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            Alert::success('Đăng nhập thành công với tài khoản '.Auth::user()->role->name );
+            Alert::success(__('Sign In success with ').Auth::user()->role->name );
             return redirect('/admin');
         } else {
             Session::flash('error', 'Email hoặc password không đúng');

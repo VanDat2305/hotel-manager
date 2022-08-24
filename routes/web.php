@@ -15,10 +15,15 @@ use Illuminate\Support\Facades\URL;
 |
 */
 
+Route::get('/login',"Auth\LoginController@getFormLogin")->name('login');
+Route::post('/login',"Auth\LoginController@postLogin")->name('postLogin');
+Route::get('/logout',"Auth\LoginController@logout")->name('logoutClient');
+Route::get('/register',"Auth\RegisterController@getFormRegister")->name('register');
+Route::post('/register',"Auth\RegisterController@postRegister")->name('post.register');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('client.home');
+Route::get('/',"Client\HomeController@home")->name('home');
+Route::get('/room',"Client\HomeController@room")->name('room');
+Route::get('/room-detail/{id}',"Client\HomeController@roomDetail")->name('room-detail');
 Route::get('change-language/{language}', 'LanguageController@changeLanguage')->name('change-language');
 Route::get('/admin/login', 'Auth\LoginAdminController@getFormLogin')->name('formLoginAdmin');
 Route::get('/admin/logout', 'Auth\LoginAdminController@logOut')->name('logOut');
@@ -40,10 +45,6 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(
         Route::prefix('customer')->name('customer.')->group(
             function () {
                 Route::get('/', 'Admin\CustomerController@index')->name('index');
-                // Route::get('/create', 'Admin\CustomerController@create')->name('create');
-                // Route::post('/store', 'Admin\CustomerController@store')->name('store');
-                // Route::get('/{id}/edit', 'Admin\CustomerController@edit')->name('edit');
-                // Route::post('/update/{id}', 'Admin\CustomerController@update')->name('update');
                 Route::post('/update-status/{id}','Admin\CustomerController@updateStatus')->name('update-status');
                 Route::delete('/destroy/{id}', 'Admin\CustomerController@destroy')->name('destroy');
             }
