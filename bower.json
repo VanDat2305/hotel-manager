@@ -17,6 +17,7 @@
     "public/bower_components"
   ],
   "dependencies": {
-    "template-admin": "https://github.com/VanDat2305/template-admin.git"
+    "template-admin": "https://github.com/VanDat2305/template-admin.git",
+    "template-hotel-booking": "https://github.com/VanDat2305/template-hotel-booking.git"
   }
 }

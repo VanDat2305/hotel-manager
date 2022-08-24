@@ -31,10 +31,10 @@ class LoginAdminRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => 'Vui lòng nhập email',
-            'email.email' => 'Email không đúng định dạng',
-            'password.required' => 'Vui lòng nhập password',
-            'password.min' => 'Vui lòng nhập tối thiểu 8 ký tự',
+            'email.required' => __('messages.email.required'),
+            'email.email' => __('messages.email.email'),
+            'password.required' => __('messages.password.required'),
+            'password.min' => __('messages.password.min'),
         ];
     }
 }

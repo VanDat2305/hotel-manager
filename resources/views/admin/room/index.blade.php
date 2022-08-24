@@ -45,7 +45,7 @@
                                     <img src="{{ $room->image ? Storage::url($room->image) : asset('bower_components/template-admin/dist/img/photo2.png') }}"
                                         alt="" srcset="" width="150px">
                                 </td>
-                                <td>{{ $room->description }}</td>
+                                <td>{!! $room->description !!}</td>
                                 <td>
                                     <button
                                         class="btn {{ $room->status == config('custom.room_status_text.active') ? 'btn-success' : 'btn-danger' }} btn-sm btn-update"

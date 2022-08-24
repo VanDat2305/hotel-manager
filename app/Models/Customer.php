@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
-class Customer extends Model
+class Customer extends Authenticatable  implements MustVerifyEmail
 {
     use HasFactory;
     protected  $appends = ['fullname'];
@@ -50,5 +53,16 @@ class Customer extends Model
     }
     public function scopeActive($query){
         return $query->where('status',config('custom.customer_status.active'));
+    }
+    public static function insertCustomer($request){
+        $data = $request;
+        $data['created_at'] = Carbon::now();
+        $data['updated_at'] = Carbon::now();
+        $data['password'] = Hash::make($request['password']);
+        unset($data['_token']);
+        unset($data['re-password']);
+        $model = new Customer();
+        $res =  $model->insert($data);
+        return $res;
     }
 }

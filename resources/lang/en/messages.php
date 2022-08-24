@@ -33,5 +33,6 @@ return [
    'checkin.required' => 'The checkin field is required',
    'checkout.required' => 'The checkout field is required ',
    'checkout.different' => 'Checkout must different checkin',
-   'address.required' => 'The address field is required'
+   'address.required' => 'The address field is required',
+   "Add falid" => "Add falid"
 ];
