@@ -28,6 +28,9 @@ Route::get('change-language/{language}', 'LanguageController@changeLanguage')->n
 Route::get('/admin/login', 'Auth\LoginAdminController@getFormLogin')->name('formLoginAdmin');
 Route::get('/admin/logout', 'Auth\LoginAdminController@logOut')->name('logOut');
 Route::post('/admin/login', 'Auth\LoginAdminController@postLogin')->name('postLoginAdmin');
+
+Route::get('/dateBook/{id}','Client\HomeController@getDate');
+
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(
     function () {
         Route::get('', 'Admin\DashboardController@index')->name('dashboard');

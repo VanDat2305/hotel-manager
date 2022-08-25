@@ -186,7 +186,6 @@
             });
             $("#checkout").datetimepicker({
                 minDate: new Date(),
-                format : 
                 // disabledDates:datesForDisable,
                 icons: {
                     time: "far fa-clock"
