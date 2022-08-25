@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         $this->v['title'] = __('List category');
-        $this->v['categories'] = Category::paginate(config('custom.limit_page.category'));
+        $this->v['categories'] = Category::get();
         return view('admin.category.index', $this->v);
     }
     public function create()

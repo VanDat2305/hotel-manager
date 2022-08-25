@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\Category;
 use App\Models\Room;
 use Illuminate\Http\Request;
@@ -31,5 +32,13 @@ class HomeController extends Controller
         $this->v['room'] =  Room::find($id);
         $this->v['roomSameCate'] = Room::where('id','!=',$id )->where('category_id',$this->v['room']->category_id)->first() ;
         return view('client.room-detail',$this->v);
+    }
+    public function getDate($id){
+        $model = new Booking();
+        $dateArray =$model->getDateAll($id);
+        return response()->json([
+           "success" => true,
+            "data" => $dateArray
+        ]);
     }
 }
