@@ -58,7 +58,7 @@
                         </tr>
                         <tr>
                             <th>{{__('TOTALPRICE')}}: </th>
-                            <td>{{ number_format($booking->sub_price, 0, '.', ',') }} VND</td>
+                            <td>{{ number_format($booking->total_price, 0, '.', ',') }} VND</td>
                         </tr>
                         <tr>
                             <th>{{__('STATUS')}} </th>

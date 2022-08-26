@@ -71,7 +71,7 @@
                                             <strong>{{ Session::get('success') }}</strong>
                                         </div>
                                     @endif
-                                    <form action="" id='checkout-form' method="post">
+                                    <form action="{{route('formCheckout',$room->id)}}" id='checkout-form' method="post">
                                         @csrf
                                         @error('booking')
                                             <div class="text-danger error">{{ $message }}</div>
@@ -93,7 +93,7 @@
                                             <div class="text-danger error">{{ $message }}</div>
                                         @enderror
                                         <div class="form-group">
-                                            <label class="details-sidebar-dropdown-title"> {{ __('CHECKIN') }} </label>
+                                            <label class="details-sidebar-dropdown-title"> {{ __('CHECKOUT') }} </label>
                                         </div>
                                         <div class="input-group date mb-2" id="checkout" data-target-input="nearest">
                                             <input type="text" name="checkout" class="form-control datetimepicker-input"
@@ -197,41 +197,5 @@
     <script
         src="{{ asset('bower_components/template-admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.js') }}">
     </script>
-    <script>
-        $(function() {
-            var id = window.location.href.split('/').pop();
-            // console.log( window.location.origin);
-            var hostname = window.location.origin;
-            var url = hostname + '/dateBook/' + id;
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                type: "GET",
-                url: url,
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                data: {
-                    _token: CSRF_TOKEN,
-                    _method: "GET",
-                },
-                success: function(data) {
-                    console.log(data);
-                }
-            });
-            $("#checkin").datetimepicker({
-                minDate: new Date(),
-                // disabledDates:datesForDisable,
-                format: "L",
-                icons: {
-                    time: "far fa-clock"
-                },
-            });
-            $("#checkout").datetimepicker({
-                minDate: new Date(),
-                // disabledDates:datesForDisable,
-                format: "L",
-                icons: {
-                    time: "far fa-clock"
-                },
-            });
-        });
-    </script>
+    <script src="{{asset('js/getDate.js')}}"></script>
 @endsection

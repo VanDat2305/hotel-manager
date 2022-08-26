@@ -30,32 +30,39 @@ class BookingRequest extends FormRequest
                 $rules = [
                     'firstname' => "required",
                     'lastname' => 'required',
-                    'email'=> 'required|email',
+                    'email' => 'required|email',
                     'phone' => 'required | numeric | min:11 ',
                     'checkin' => 'required',
                     'checkout' => 'required | different:checkin',
                     'address' => 'required'
                 ];
                 break;
-            
+            case 'formCheckout':
+                $rules = [
+                    'checkin' => 'required',
+                    'checkout' => 'required | different:checkin',
+                ];
+                break;
+
             default:
                 break;
         }
         return $rules;
     }
-    public function messages(){
+    public function messages()
+    {
         return [
             'firstname.required' => __('messages.firstname.required'),
             'lastname.required' => __('messages.lastname.required'),
             'email.required' => __('messages.email.required'),
-            'email.email'=> __('messages.email.email'),
+            'email.email' => __('messages.email.email'),
             'phone.required' => __('messages.phone.required'),
             'phone.min' => __('messages.phone.min'),
-            'phone.numeric'=> __('messages.phone.numeric'),
+            'phone.numeric' => __('messages.phone.numeric'),
             'checkin.required' => __('messages.checkin.required'),
             'checkout.required' => __('messages.checkout.required'),
             'checkout.different' => __('messages.checkout.different'),
             'address.required' => __('messages.address.required')
-        ]; 
+        ];
     }
 }

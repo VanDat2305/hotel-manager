@@ -69,4 +69,5 @@ return [
         'Cancelled'=> 'bg-fuchsia',
         'Unsuccessful' => 'bg-maroon'
     ],
+    'vat' => 10,
 ];

@@ -86,5 +86,16 @@
     "Add success" : "Add success",
     "Showing" : "Showing  ",
     "of" : "  of  ",
-    "results" : " results"
+    "results" : " results",
+    "INFOCHECKOUT" : "Info checkout",
+    "Required Login" : "Required Login",
+    "Profile" : "Profile",
+    "User Information" : "User Information",
+    "Booking Details" : "Booking Details",
+    "Invoice" : "Invoice",
+    "VND" : "VND",
+    "Vat" : "Vat",
+    "Pay & Confirm" : "Pay & Confirm",
+    "payment successful" : "payment successful",
+    "payment error" : "payment error"
 }

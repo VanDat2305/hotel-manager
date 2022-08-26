@@ -24,12 +24,18 @@ Route::post('/register',"Auth\RegisterController@postRegister")->name('post.regi
 Route::get('/',"Client\HomeController@home")->name('home');
 Route::get('/room',"Client\HomeController@room")->name('room');
 Route::get('/room-detail/{id}',"Client\HomeController@roomDetail")->name('room-detail');
+
+Route::get('/dateBook/{id}','Client\HomeController@getDate');
+Route::middleware('checkCustomer')->group(function(){
+    Route::post('/formCheckout/{room_id}',"Client\BookingController@formCheckOut")->name('formCheckout');
+    Route::post('/paymentVNpay','PaymentController@create')->name('payment');
+    Route::get('/vnpay_return','PaymentController@vnpay_return');
+});
+
 Route::get('change-language/{language}', 'LanguageController@changeLanguage')->name('change-language');
 Route::get('/admin/login', 'Auth\LoginAdminController@getFormLogin')->name('formLoginAdmin');
 Route::get('/admin/logout', 'Auth\LoginAdminController@logOut')->name('logOut');
 Route::post('/admin/login', 'Auth\LoginAdminController@postLogin')->name('postLoginAdmin');
-
-Route::get('/dateBook/{id}','Client\HomeController@getDate');
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(
     function () {
