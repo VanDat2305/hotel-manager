@@ -20,3 +20,4 @@ mix.js("resources/js/app.js", "public/js").postCss(
 );
 mix.js("resources/js/remove-ajax.js", "public/js");
 mix.js("resources/js/create-update-category.js", "public/js");
+mix.js("resources/js/getDate.js", "public/js");

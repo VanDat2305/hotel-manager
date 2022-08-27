@@ -86,7 +86,18 @@
     "Add success" : "Thêm mới thành công",
     "Showing" : "Hiện  ",
     "of" : "  trên  ",
-    "results" : " kết quả"
+    "results" : " kết quả",
+    "INFOCHECKOUT" : "Thông tin thanh toán",
+    "Required Login" : "Vui lòng đăng nhập",
+    "Profile" : "Cá nhân",
+    "User Information" : "Thông tin người đặt",
+    "Booking Details" : "Chi tiết đặt phòng",
+    "Invoice" : "Hóa đơn",
+    "VND" : "đ",
+    "Vat" : "Thuế",
+    "Pay & Confirm" : "Xác nhận và thanh toán",
+    "payment successful" : "Thanh toán thành công",
+    "payment error" : "Thanh toán gặp lỗi"
 
 
 }

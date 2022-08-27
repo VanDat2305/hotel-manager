@@ -19,14 +19,15 @@
             <div class="card-body">
                 <div class="row">
                    @foreach ($rooms as $room )
-                   <div class="card col-2 m-4 p-0" >
+                   <div class="card col-3 m-4 p-0" >
                     <div class="img" style="height: 120px">
                         <img class="card-img-top" height="100%" src="{{Storage::url($room->image)}}" >
                     </div>
                     <div class="card-body">
-                      <div class="row">
+                      <div class="row p-2">
                         <h5 class="card-title pb-2">{{$room->name}}</h5>
-                      </div>
+                    </div>
+                    <p>{{$room->nameCate}}</p>
                         <a href="{{route('admin.booking.create',$room->id)}}" class="btn btn-primary">{{__('BOOKING')}}</a>
                     </div>
                   </div>

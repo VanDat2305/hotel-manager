@@ -75,7 +75,8 @@ class BookingController extends Controller
     public function listRoom()
     {
         $this->v['title'] = __('List room');
-        $this->v['rooms'] = Room::paginate(config('custom.limit_page.room-booking'));
+        // $this->v['rooms'] = Room::orderBy('category_id','ASC')->paginate(config('custom.limit_page.room-booking'));
+        $this->v['rooms'] =  Room::statusRoomNow();
         return view('admin.booking.listRoom', $this->v);
     }
     public function updateStatus(Request $request,$id)
