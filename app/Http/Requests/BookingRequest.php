@@ -43,6 +43,12 @@ class BookingRequest extends FormRequest
                     'checkout' => 'required | different:checkin',
                 ];
                 break;
+            case 'search-date':
+                $rules = [
+                    'checkin' => 'required',
+                    'checkout' => 'required | different:checkin',
+                ];
+                break;
 
             default:
                 break;

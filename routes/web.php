@@ -23,7 +23,9 @@ Route::post('/register',"Auth\RegisterController@postRegister")->name('post.regi
 
 Route::get('/',"Client\HomeController@home")->name('home');
 Route::get('/room',"Client\HomeController@room")->name('room');
+Route::get('/room-by-category/{cate_id}',"Client\HomeController@getRoomByCate")->name('roomByCate');
 Route::get('/room-detail/{id}',"Client\HomeController@roomDetail")->name('room-detail');
+Route::post('/search-date',"Client\HomeController@searchDate")->name('search-date');
 
 Route::get('/dateBook/{id}','Client\HomeController@getDate');
 Route::middleware('checkCustomer')->group(function(){

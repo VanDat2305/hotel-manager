@@ -79,10 +79,10 @@ class Booking extends Model
     public static function calcPrice($start_time, $end_time, $room_id)
     {
         $totalHours =  Carbon::parse($start_time)->diffInHours(Carbon::parse($end_time));
-        $totalDays =  Carbon::parse($start_time)->diffInDays(Carbon::parse($end_time));
+        $totalDays =  Carbon::parse($start_time)->diffInDays(Carbon::parse($end_time))+1;
         $priceRoom = Room::find($room_id)->price;
-            $price = $totalHours * ($priceRoom / 22);
-            return $price;
+        $price = $totalDays * $priceRoom ;
+        return $price;
     }
     public function addBooking($request, $room_id)
     {
@@ -91,11 +91,11 @@ class Booking extends Model
         $data['check_in'] = Carbon::parse($request->input('checkin'))->format('Y-m-d H:i:s');
         $data['check_out'] = Carbon::parse($request->input('checkout'))->format('Y-m-d H:i:s');
         $data['infomation'] = $request->input('infomation');
-        $data['sub_price'] = Booking::calcPrice($data['check_in'], $data['check_out'], $room_id);
+        $data['sub_price'] = Booking::calcPrice($request->input('checkin'), $request->input('checkout'), $room_id);
         $data['total_price'] = $data['sub_price']+ ($data['sub_price']*config('custom.vat'));
         $data['created_at'] = Carbon::now();
         $data['updated_at'] = Carbon::now();
-        $res = DB::table('bookings')->insert($data);
+        $res = DB::table('bookings')->insertGetId($data);
         return $res;
     }
     public function scopeComplete($query)
