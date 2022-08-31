@@ -97,7 +97,13 @@
     "Vat" : "Thuế",
     "Pay & Confirm" : "Xác nhận và thanh toán",
     "payment successful" : "Thanh toán thành công",
-    "payment error" : "Thanh toán gặp lỗi"
+    "payment error" : "Thanh toán gặp lỗi",
+    "Revenue monthly" : "Doanh thu hàng tháng",
+    "Revenue by category" : "Thông kê theo danh mục",
+    "NOW" : "Hiện tại",
+    "ON" : "Đang ở",
+    "OFF" : "Trống",
+    "PAYMENT" : "Thanh toán"
 
 
 }

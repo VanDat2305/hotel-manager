@@ -24,8 +24,20 @@
                 <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                     <thead>
                         <tr>
-                            <div>
-                                {{ $rooms->links() }}</div>
+                            <td colspan="5">
+                                <div>{{ $rooms->links() }}</div>
+                            </td>
+                            <td colspan="3">
+                                <form action="{{route('admin.room.bycate')}}" method="get" class="row">
+                                    <select class=" form-control col-11" name="category_id">
+                                        <option value="">Tất cả</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button class="btn btn-secondary col-1">  <i class="fas fa-search pt-1 pb-1"></i></button>
+                                </form>
+                            </td>
                         </tr>
                         <tr>
                             <th>#</th>
@@ -34,6 +46,7 @@
                             <th>{{ __('CATEGORY') }}</th>
                             <th>{{ __('IMAGE') }}</th>
                             <th style="width:20rem">{{ __('DESCRIPTION') }}</th>
+                            <th>{{ __('NOW') }}</th>
                             <th>{{ __('STATUS') }}</th>
                             <th><a href="{{ route('admin.room.create') }}"><i class="fa fa-plus"></i></a></th>
                         </tr>
@@ -50,6 +63,7 @@
                                         alt="" srcset="" width="150px">
                                 </td>
                                 <td>{!! $room->description !!}</td>
+                                <td> <span class="badge badge-pill {{$room->empty==0 ? 'badge-danger' : 'badge-success'}}">{{$room->empty==0 ? __("OFF") : __("ON")}}</span></td>
                                 <td>
                                     <button
                                         class="btn {{ $room->status == config('custom.room_status_text.active') ? 'btn-success' : 'btn-danger' }} btn-sm btn-update"

@@ -25,10 +25,12 @@
                     </div>
                     <div class="card-body">
                       <div class="row p-2">
-                        <h5 class="card-title pb-2">{{$room->name}}</h5>
+                        <h5 class="card-title pb-2">{{$room->name}}  </h5><p class="ml-3"><span class="badge {{$room->empty==0 ? 'badge-danger' : 'badge-success'}}">{{$room->empty==0 ? __("OFF") : __("ON")}}</span></p>
                     </div>
-                    <p>{{$room->nameCate}}</p>
-                        <a href="{{route('admin.booking.create',$room->id)}}" class="btn btn-primary">{{__('BOOKING')}}</a>
+                    <p >{{$room->category->name }}</p>
+                    <div class="d-flex">
+                        <a href="{{route('admin.booking.create',$room->id)}}" class="flex-right btn btn-primary">{{__('BOOKING')}}</a>
+                    </div>
                     </div>
                   </div>
                    @endforeach

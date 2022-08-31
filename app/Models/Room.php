@@ -73,4 +73,11 @@ class Room extends Model
             ->paginate(config('custom.limit_page.room'));
         return $rooms;
     }
+    public static function getRoom($param = null){
+        $query = Room::select('rooms.*',DB::raw('(SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS BIT
+        From Bookings Where Bookings.room_id = rooms.id) as empty') );
+        $param != null ? $query = $query->where('category_id',$param) : "";
+        $query = $query->paginate(config('custom.limit_page.room'));
+        return $query;
+    }
 }

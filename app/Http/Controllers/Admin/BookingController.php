@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BookingRequest;
 use App\Models\Booking;
 use App\Models\Customer;
+use App\Models\Payment;
 use App\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -54,6 +55,7 @@ class BookingController extends Controller
     {
         $this->v['title'] = __('Booking Detail');
         $this->v['booking'] = Booking::find($id);
+        $this->v['payment'] = Payment::where('booking_id',$id)->first();
         return view('admin.booking.detail', $this->v);
     }
     public function destroy($id)
@@ -75,8 +77,7 @@ class BookingController extends Controller
     public function listRoom()
     {
         $this->v['title'] = __('List room');
-        // $this->v['rooms'] = Room::orderBy('category_id','ASC')->paginate(config('custom.limit_page.room-booking'));
-        $this->v['rooms'] =  Room::statusRoomNow();
+        $this->v['rooms'] =  Room::getRoom($param = null);
         return view('admin.booking.listRoom', $this->v);
     }
     public function updateStatus(Request $request,$id)

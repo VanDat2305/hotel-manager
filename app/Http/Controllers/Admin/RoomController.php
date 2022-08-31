@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Category;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -20,8 +21,10 @@ class RoomController extends Controller
     }
     public function index()
     {
+        $param = isset($_GET['category_id']) ? $_GET['category_id'] : null ;
         $this->v['title'] = __('List room');
-        $this->v['rooms'] = Room::paginate(config('custom.limit_page.room'));
+        $this->v['rooms'] = Room::getRoom($param);
+        $this->v['categories'] = Category::active()->get();
         return view('admin.room.index',$this->v);
     }
     public function create()

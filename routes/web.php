@@ -74,6 +74,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(
         Route::prefix('room')->name('room.')->group(
             function () {
                 Route::get('/', 'Admin\RoomController@index')->name('index');
+                Route::post('/', 'Admin\RoomController@index')->name('bycate');
                 Route::get('/create', 'Admin\RoomController@create')->name('create');
                 Route::post('/store', 'Admin\RoomController@store')->name('store');
                 Route::get('/{id}/edit', 'Admin\RoomController@edit')->name('edit');
@@ -91,6 +92,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(
                 Route::get('/listRoom', 'Admin\BookingController@listRoom')->name('listRoom');
                 Route::post('/update-status/{id}','Admin\BookingController@updateStatus')->name('update-status');
                 Route::delete('/destroy/{id}', 'Admin\BookingController@destroy')->name('destroy');
+                Route::post('/payment','PaymentController@create')->name('payment');
+                Route::get('/vnpayAdmin_return','PaymentController@vnpayAdminReturn')->name('returnvn');
             }
         );
     }
