@@ -70,4 +70,14 @@ return [
         'Unsuccessful' => 'bg-maroon'
     ],
     'vat' => 10,
+    'vnpayStatus'=> [
+        '00' =>	'Giao dịch thanh toán thành công',
+        '01' =>	'Giao dịch chưa hoàn tất',
+        '02' =>	'Giao dịch bị lỗi',
+        '04' =>	'Giao dịch đảo' ,
+        '05' =>	'VNPAY đang xử lý giao dịch này' ,
+        '06' =>	'VNPAY đã gửi yêu cầu hoàn tiền sang Ngân hàng' ,
+        '07' =>	'Giao dịch bị nghi ngờ gian lận',
+        '09' =>	'GD Hoàn trả bị từ chối'
+    ]
 ];

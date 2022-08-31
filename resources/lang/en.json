@@ -97,5 +97,11 @@
     "Vat" : "Vat",
     "Pay & Confirm" : "Pay & Confirm",
     "payment successful" : "payment successful",
-    "payment error" : "payment error"
+    "payment error" : "payment error",
+    "Revenue monthly" : "Revenue monthly",
+    "Revenue by category" : "Revenue by category",
+    "NOW" : "Now",
+    "ON" : "On",
+    "OFF" : "Off",
+    "PAYMENT" : "Payment"
 }

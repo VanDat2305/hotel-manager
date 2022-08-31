@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -11,24 +12,27 @@ class PaymentController extends Controller
 
     public function create(Request $request)
     {
-        $model = new Booking();
-        $model->addBooking($request,$request->room_id);
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
-
+        $model = Booking::find($request->booking_id);
+        if ($model) {
+            $id_booking = $model->id;
+            $vnp_Returnurl = "http://127.0.0.1:8000/admin/booking/vnpayAdmin_return";
+        }else{
+            $model = new Booking();
+            $id_booking = $model->addBooking($request, $request->room_id);
+            $vnp_Returnurl = "http://localhost:8000/vnpay_return";
+        }
         $vnp_TmnCode = "70N50ZKL"; //Website ID in VNPAY System
         $vnp_HashSecret = "RAPNIYTGEOHTNCTYNVPGUDIYCALAKMEH"; //Secret key
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost:8000/vnpay_return";
         $vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
         //Config input format
         //Expire
         $startTime = date("YmdHis");
         $expire = date('YmdHis', strtotime('+15 minutes', strtotime($startTime)));
-
-        $vnp_TxnRef = time(); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-        $vnp_OrderInfo = "Thanh toán hóa đơn";
+        $vnp_TxnRef = $id_booking; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = "Thanh toan hoa don";
         $vnp_OrderType = "billpayment";
-        $vnp_Amount = $request->total_price * 100;
+        $vnp_Amount = $request->total_price *100;
         $vnp_Locale = 'vn';
         $vnp_BankCode = '';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -53,8 +57,6 @@ class PaymentController extends Controller
         if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
             $inputData['vnp_Bill_State'] = $vnp_Bill_State;
         }
-
-        //var_dump($inputData);
         ksort($inputData);
         $query = "";
         $i = 0;
@@ -86,9 +88,22 @@ class PaymentController extends Controller
     }
     public function vnpay_return(Request $request)
     {
+        $model = new Payment;
         if ($request->vnp_ResponseCode == "00") {
+            $model->add($request);
             Alert::success(__('payment successful'));
             return redirect()->route('home');
+        }
+        Alert::error(__('payment error'));
+        return redirect()->back();
+    }
+    public function vnpayAdminReturn(Request $request)
+    {
+        $model = new Payment;
+        if ($request->vnp_ResponseCode == "00") {
+            $model->add($request);
+            Alert::success(__('payment successful'));
+            return redirect()->route('admin.booking.index');
         }
         Alert::error(__('payment error'));
         return redirect()->back();

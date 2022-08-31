@@ -76,9 +76,9 @@
                                 <div class="checkout-sidebar-contents">
                                     <ul class="checkout-flex-list list-style-none checkout-border-top pt-3 mt-3">
                                         <li class="list"> <span class="regular"> {{ __('CHECKIN') }} </span> <span
-                                                class="strong"> {{ $checkin }} </span> </li>
+                                                class="strong"><input type="text" class="disable-input border-0" name="checkin" value=" {{ $checkin }}"> </span> </li>
                                         <li class="list"> <span class="regular"> {{ __('CHECKOUT') }} </span> <span
-                                                class="strong"> {{ $checkout }} </span> </li>
+                                                class="strong"><input type="text" class="disable-input border-0" name="checkout" value=" {{ $checkout }}">  </span> </li>
                                         <li class="list"> <span class="regular"> {{ __('NAMEROOM') }} </span> <span
                                                 class="strong"> {{ $room->name }} </span> </li>
                                     </ul>

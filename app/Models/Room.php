@@ -54,4 +54,30 @@ class Room extends Model
     {
         return $query->where('status', config('custom.room_status.active'));
     }
+    public static function searchByDate($request){
+        $datas = Booking::select('room_id')
+        ->where('check_in','<=',$request->checkin)
+        ->where('check_out','>=',$request->checkout)
+        ->get()->toArray();
+        $listId = [];
+         foreach($datas as $data){
+            foreach($data as $i){
+               array_push($listId,$i);
+            }
+        }
+        $rooms =  DB::table('rooms')->select('rooms.*','categories.name as cateName')
+            ->join('categories','rooms.category_id','=','categories.id')
+            ->where('rooms.category_id',$request->category_id)
+            ->whereNotIn('rooms.id',$listId)
+            // ->active()
+            ->paginate(config('custom.limit_page.room'));
+        return $rooms;
+    }
+    public static function getRoom($param = null){
+        $query = Room::select('rooms.*',DB::raw('(SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS BIT
+        From Bookings Where Bookings.room_id = rooms.id) as empty') );
+        $param != null ? $query = $query->where('category_id',$param) : "";
+        $query = $query->paginate(config('custom.limit_page.room'));
+        return $query;
+    }
 }

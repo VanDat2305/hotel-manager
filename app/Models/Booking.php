@@ -78,11 +78,10 @@ class Booking extends Model
     }
     public static function calcPrice($start_time, $end_time, $room_id)
     {
-        $totalHours =  Carbon::parse($start_time)->diffInHours(Carbon::parse($end_time));
-        $totalDays =  Carbon::parse($start_time)->diffInDays(Carbon::parse($end_time));
+        $totalDays =  Carbon::parse($start_time)->diffInDays(Carbon::parse($end_time))+1;
         $priceRoom = Room::find($room_id)->price;
-            $price = $totalHours * ($priceRoom / 22);
-            return $price;
+        $price = $totalDays * $priceRoom ;
+        return $price;
     }
     public function addBooking($request, $room_id)
     {
@@ -91,11 +90,11 @@ class Booking extends Model
         $data['check_in'] = Carbon::parse($request->input('checkin'))->format('Y-m-d H:i:s');
         $data['check_out'] = Carbon::parse($request->input('checkout'))->format('Y-m-d H:i:s');
         $data['infomation'] = $request->input('infomation');
-        $data['sub_price'] = Booking::calcPrice($data['check_in'], $data['check_out'], $room_id);
-        $data['total_price'] = $data['sub_price']+ ($data['sub_price']*config('custom.vat'));
+        $data['sub_price'] = Booking::calcPrice($request->input('checkin'), $request->input('checkout'), $room_id);
+        $data['total_price'] = $data['sub_price']+ ($data['sub_price']*config('custom.vat')/100);
         $data['created_at'] = Carbon::now();
         $data['updated_at'] = Carbon::now();
-        $res = DB::table('bookings')->insert($data);
+        $res = DB::table('bookings')->insertGetId($data);
         return $res;
     }
     public function scopeComplete($query)
@@ -112,14 +111,12 @@ class Booking extends Model
         foreach ($periods as $booking) {
             $begin = new DateTime($booking['check_in']);
             $end = new DateTime($booking['check_out']);
-            // $end = $end->modify('+1 day');
             $interval = new DateInterval('P1D');
             $daterange = new DatePeriod($begin, $interval, $end);
             $arrDay = [];
             foreach ($daterange as $date) {
                 array_push($arrDay, $date->format("m-d-Y"));
             }
-            // unset($arrDay[count( $arrDay)]);
             array_push($arrDate, $arrDay);
         }
         $arrDate = array_merge([], ...$arrDate);

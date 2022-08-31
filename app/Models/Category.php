@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Request;
 
 class Category extends Model
 {
@@ -12,6 +13,9 @@ class Category extends Model
     protected $fillable = ['name','user_id','status'];
     public function user(){
         return $this->BelongsTo(User::class);
+    }
+    public function rooms(){
+        return $this->hasMany(Room::class);
     }
     public function getStatusAttribute($value)
     {

@@ -2,6 +2,18 @@
 @section('title')
    {{__('HOME')}} 
 @endsection
+@section('style')
+    @parent
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('bower_components/template-admin/plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('bower_components/template-admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.css') }}">
+    <style>
+        .hotel-details-widget {
+            overflow: inherit;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="banner-area banner-area  ">
     {{-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -28,42 +40,59 @@
 <div class="location-area pat-90">
     <div class="container">
         <div class="banner-location bg-white radius-5">
-            <form class="banner-location-flex" method="post" action="">
+            <form class="banner-location-flex" method="post" action="{{ route('search-date') }}">
                 @csrf
                 <div class="banner-location-single">
                     <div class="banner-location-single-flex">
                         <div class="banner-location-single-contents">
-                            <span class="banner-location-single-contents-subtitle">{{__('CHECKIN')}} </span>
-                            <input class="form-control " name="checkin" id="from-picker" type="text"
-                                placeholder="{{__('Enter checkin')}}">
+                            <span class="banner-location-single-contents-subtitle">{{ __('CHECKIN') }} </span>
+                            <div class="input-group mb-3" style="position: relative" id="checkin"
+                                data-target-input="nearest">
+                                <input type="text" class="form-control" name="checkin" data-target="#checkin">
+                                <span class="input-group-text" id="basic-addon2" data-target="#checkin"
+                                    data-toggle="datetimepicker"><i class="la la-calendar "></i></span>
+                            </div>
+                            @error('checkin')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <div class="banner-location-single">
                     <div class="banner-location-single-flex">
                         <div class="banner-location-single-contents">
-                            <span class="banner-location-single-contents-subtitle"> {{__('CHECKOUT')}} </span>
-                            <input class="form-control " name="checkout" id="to-picker" type="text"
-                                placeholder="{{__('Enter checkout')}}">
+                            <span class="banner-location-single-contents-subtitle">{{ __('CHECKOUT') }} </span>
+                            <div class="input-group mb-3" style="position: relative" id="checkout"
+                                data-target-input="nearest">
+                                <input type="text" class="form-control" name="checkout" data-target="#checkout">
+                                <span class="input-group-text" id="basic-addon4" data-target="#checkout"
+                                    data-toggle="datetimepicker"><i class="la la-calendar "></i></span>
+                            </div>
+                            @error('checkout')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <div class="banner-location-single">
                     <div class="banner-location-single-flex">
                         <div class="banner-location-single-contents">
-                            <span class="banner-location-single-contents-subtitle"> {{__('CATEGORY')}} </span>
-                            <select class=" form-control" name="category_id">
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
+                            <span class="banner-location-single-contents-subtitle">{{ __('CATEGORY') }} </span>
+                            <div class="input-group mb-3" data-target-input="nearest">
+                                <select class=" form-control" name="category_id">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="banner-location-single-search">
-                        <button class="btn btn-primary  search-click-icon ">
-                            <i class="las la-search pt-1 pb-1"></i>
-                        </button>
+                    <button class="btn btn-primary  search-click-icon ">
+                        <i class="las la-search pt-1 pb-1"></i>
+                    </button>
+                    <small id="emailHelpId" class="form-text text-muted"></small>
                 </div>
             </form>
         </div>
@@ -304,4 +333,42 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    @parent
+    <!-- InputMask -->
+    <script src="{{ asset('bower_components/template-admin/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    <script src="{{ asset('bower_components/template-admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script
+        src="{{ asset('bower_components/template-admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.js') }}">
+    </script>
+    <script>
+        $("#checkin").datetimepicker({
+                minDate: new Date(),
+                format: "YYYY-MM-DD 14:00",
+                collapse: false,
+                sideBySide: true,
+                useCurrent: false,
+                showClose: true,
+                timePicker: !0,
+                timePicker24Hour: !0,
+                icons: {
+                    time: "far fa-clock",
+                },
+            }),
+            $("#checkout").datetimepicker({
+                minDate: new Date(),
+                format: "YYYY-MM-DD 12:00",
+                collapse: false,
+                sideBySide: true,
+                useCurrent: false,
+                showClose: true,
+                timePicker: !0,
+                timePicker24Hour: !0,
+                icons: {
+                    time: "far fa-clock",
+                },
+            })
+    </script>
 @endsection
