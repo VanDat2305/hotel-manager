@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Mail\MailPayment;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class Payment extends Model
 {
@@ -76,5 +78,19 @@ class Payment extends Model
             $data[] = $total;
         }
         return $data;
+    }
+    public function sentInvoice($booking_id){
+        $bookings = Booking::find($booking_id);
+        $contents['title'] = 'Payment';
+        $contents['firstname'] = $bookings->customer->firstname;
+        $contents['booking_id'] = $booking_id;
+        $contents['name'] = $bookings->room->name;
+        $contents['checkin'] = $bookings->check_in;
+        $contents['checkout'] = $bookings->check_out;
+        $contents['price'] =  $bookings->room->price;
+        $contents['sub_price'] =  $bookings->sub_price;
+        $contents['vat'] =  $bookings->sub_price*config('custom.vat')/100;
+        $contents['total_price'] =  $bookings->total_price;
+        Mail::to($bookings->customer->email)->send(new MailPayment($contents));
     }
 }

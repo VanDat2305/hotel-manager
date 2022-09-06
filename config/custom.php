@@ -46,7 +46,8 @@ return [
         'room' => 5,
         'user' => 5,
         'booking' => 5,
-        'room-booking' => 10
+        'room-booking' => 10,
+        'room-client' => 3
     ],
     'booking_status' => [
         'Confirmed'=> '0',

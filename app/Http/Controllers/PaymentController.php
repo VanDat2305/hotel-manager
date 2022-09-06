@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailPayment;
 use App\Models\Booking;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PaymentController extends Controller
@@ -12,14 +14,15 @@ class PaymentController extends Controller
 
     public function create(Request $request)
     {
+        $host = $request->getHttpHost() ;
         $model = Booking::find($request->booking_id);
         if ($model) {
             $id_booking = $model->id;
-            $vnp_Returnurl = "http://127.0.0.1:8000/admin/booking/vnpayAdmin_return";
+            $vnp_Returnurl = "http://".$host."/admin/booking/vnpayAdmin_return";
         }else{
             $model = new Booking();
             $id_booking = $model->addBooking($request, $request->room_id);
-            $vnp_Returnurl = "http://localhost:8000/vnpay_return";
+            $vnp_Returnurl = "http://".$host."/vnpay_return";
         }
         $vnp_TmnCode = "70N50ZKL"; //Website ID in VNPAY System
         $vnp_HashSecret = "RAPNIYTGEOHTNCTYNVPGUDIYCALAKMEH"; //Secret key
@@ -91,6 +94,7 @@ class PaymentController extends Controller
         $model = new Payment;
         if ($request->vnp_ResponseCode == "00") {
             $model->add($request);
+            $model->sentInvoice($request->vnp_TxnRef);
             Alert::success(__('payment successful'));
             return redirect()->route('home');
         }
@@ -102,10 +106,12 @@ class PaymentController extends Controller
         $model = new Payment;
         if ($request->vnp_ResponseCode == "00") {
             $model->add($request);
+            $model->sentInvoice($request->vnp_TxnRef);
             Alert::success(__('payment successful'));
             return redirect()->route('admin.booking.index');
         }
         Alert::error(__('payment error'));
         return redirect()->back();
     }
+
 }

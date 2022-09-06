@@ -26,7 +26,8 @@
                                 <span class="banner-location-single-contents-subtitle">{{ __('CHECKIN') }} </span>
                                 <div class="input-group mb-3" style="position: relative" id="checkin"
                                     data-target-input="nearest">
-                                    <input type="text" class="form-control" name="checkin" data-target="#checkin">
+                                    <input type="text" class="form-control" name="checkin" data-toggle="checkin"
+                                        data-target="#checkin">
                                     <span class="input-group-text" id="basic-addon2" data-target="#checkin"
                                         data-toggle="datetimepicker"><i class="la la-calendar "></i></span>
                                 </div>
@@ -350,6 +351,7 @@
     </script>
     <script>
         $("#checkin").datetimepicker({
+                showDropdowns: true,
                 minDate: new Date(),
                 format: "YYYY-MM-DD 14:00",
                 collapse: false,
@@ -360,20 +362,20 @@
                 timePicker24Hour: !0,
                 icons: {
                     time: "far fa-clock",
-                },
+                }
             }),
-            $("#checkout").datetimepicker({
-                minDate: new Date(),
-                format: "YYYY-MM-DD 12:00",
-                collapse: false,
-                sideBySide: true,
-                useCurrent: false,
-                showClose: true,
-                timePicker: !0,
-                timePicker24Hour: !0,
-                icons: {
-                    time: "far fa-clock",
-                },
-            })
+        $("#checkout").datetimepicker({
+            minDate: new Date(),
+            format: "YYYY-MM-DD 12:00",
+            collapse: false,
+            sideBySide: true,
+            useCurrent: false,
+            showClose: true,
+            timePicker: !0,
+            timePicker24Hour: !0,
+            icons: {
+                time: "far fa-clock",
+            },
+        })
     </script>
 @endsection

@@ -7,7 +7,7 @@ return [
     'phone.required' => "The phone field is required",
     'phone.min' => "The phone must be at least",
     'password.required' => "The password field is required",
-    'password.min' => "Mật khẩu không đủ 8 ký tự",
+    'password.min' => "The password must 8 characters",
     're-password.required' => "The re-password field is required",
     're-password.same' => "The re-passowrd and password must match",
     'image.image' => 'The image must be an image ',

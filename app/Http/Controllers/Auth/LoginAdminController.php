@@ -21,7 +21,7 @@ class LoginAdminController extends Controller
     {
         if (Auth::check()) {
             Alert::success(__('Account is logged in'));
-            return redirect()->route('admin.');
+            return redirect()->route('admin.dashboard');
         }
         return view('admin.login');
     }
