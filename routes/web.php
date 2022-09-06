@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
@@ -32,6 +33,7 @@ Route::middleware('checkCustomer')->group(function(){
     Route::post('/formCheckout/{room_id}',"Client\BookingController@formCheckOut")->name('formCheckout');
     Route::post('/paymentVNpay','PaymentController@create')->name('payment');
     Route::get('/vnpay_return','PaymentController@vnpay_return');
+    Route::get('/dashboard','Client\ProfileController@index')->name('dashboard');
 });
 
 Route::get('change-language/{language}', 'LanguageController@changeLanguage')->name('change-language');

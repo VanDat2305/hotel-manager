@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="hotel-view-contents">
                                         <div class="hotel-view-contents-header">
-                                            <h3 class="hotel-view-contents-title"> {{ $roomSameCate->name }} </h3>
+                                            <a href="{{route('room-detail',$roomSameCate->id)}}" class="hotel-view-contents-title"> {{ $roomSameCate->name }} </a>
                                             <div class="hotel-view-contents-location mt-2">
                                             </div>
                                         </div>
@@ -159,7 +159,7 @@
                                                     <i class="las la-dumbbell"></i>
                                                 </div>
                                                 <div class="hotel-view-contents-icon">
-                                                    <a class="hotel-view-contents-icon-more" href="javascript:void(0)"> +8
+                                                    <a class="hotel-view-contents-icon-more" href="{{route('room-detail',$roomSameCate->id)}}"> +8
                                                         More </a>
                                                 </div>
                                             </div>
@@ -173,7 +173,7 @@
                                                     </h4>
                                                 </div>
                                                 <div class="btn-wrapper">
-                                                    <a href="javascript:void(0)" class="cmn-btn btn-bg-1 btn-small">
+                                                    <a href="{{route('room-detail',$roomSameCate->id)}}" class="cmn-btn btn-bg-1 btn-small">
                                                         {{ __('Room detail') }} </a>
                                                 </div>
                                             </div>
@@ -190,6 +190,7 @@
 @endsection
 @section('script')
     @parent
+    <script src="{{asset('js/app.js')}}"></script>
     <!-- InputMask -->
     <script src="{{ asset('bower_components/template-admin/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('bower_components/template-admin/plugins/inputmask/jquery.inputmask.min.js') }}"></script>

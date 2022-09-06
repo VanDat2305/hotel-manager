@@ -60,7 +60,7 @@
                         </div>
                         <div class="navbar-author-wrapper">
                             <div class="navbar-author-wrapper-list">
-                                <a href="#" class="navbar-author-wrapper-list-item"> {{__('Profile')}} </a>
+                                <a href="{{route('dashboard')}}" class="navbar-author-wrapper-list-item"> {{__('Profile')}} </a>
                                 <a href="{{route('logoutClient')}}" class="navbar-author-wrapper-list-item">{{__('LOGOUT')}}</a>
                             </div>
                         </div>

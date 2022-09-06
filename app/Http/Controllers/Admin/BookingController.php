@@ -22,7 +22,7 @@ class BookingController extends Controller
     public function index()
     {
         $this->v['title'] = __('List booking');
-        $this->v['bookings'] = Booking::paginate(10);
+        $this->v['bookings'] = Booking::get();
 
         return view('admin.booking.index', $this->v);
     }

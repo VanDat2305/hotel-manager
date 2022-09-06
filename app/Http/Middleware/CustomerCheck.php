@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerCheck
 {
@@ -20,7 +21,8 @@ class CustomerCheck
             if (auth('customer')->check()) {
                 return $next($request);
             }
-            return redirect()->route('home');
+            Alert::error(__('You need to login'));
+            return redirect()->route('login');
         } catch (\Throwable $th) {
             return redirect()->route('home');
         }

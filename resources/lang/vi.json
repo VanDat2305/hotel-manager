@@ -103,7 +103,13 @@
     "NOW" : "Hiện tại",
     "ON" : "Đang ở",
     "OFF" : "Trống",
-    "PAYMENT" : "Thanh toán"
+    "PAYMENT" : "Thanh toán",
+    "You need to login" : "Bạn cần đăng nhập",
+    "BOOKINGID" : "Mã đặt phòng",
+    "Thank you for trusting and using services" : "Cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ của",
+    "Details are as follows" : "Thông tin chi tiết như sau",
+    "Edit Profile" : "Chỉnh sửa cá nhân",
+    "Password Change" : "Thay đổi mật khẩu"
 
 
 }

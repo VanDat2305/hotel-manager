@@ -156,7 +156,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Eiffel Tower </a>
+                            <a href="#"> Eiffel Tower </a>
                         </h4>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Disneyland </a>
+                            <a href="#"> Disneyland </a>
                         </h4>
                     </div>
                 </div>
@@ -188,7 +188,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Palace de justice </a>
+                            <a href="#"> Palace de justice </a>
                         </h4>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Arc de Trimorph </a>
+                            <a href="#"> Arc de Trimorph </a>
                         </h4>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Disneyland </a>
+                            <a href="#"> Disneyland </a>
                         </h4>
                     </div>
                 </div>
@@ -236,7 +236,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Disneyland </a>
+                            <a href="#"> Disneyland </a>
                         </h4>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Disneyland </a>
+                            <a href="#"> Disneyland </a>
                         </h4>
                     </div>
                 </div>
@@ -268,7 +268,7 @@
                     </div>
                     <div class="single-attraction-two-contents">
                         <h4 class="single-attraction-two-contents-title">
-                            <a href="hotel_details.html"> Disneyland </a>
+                            <a href="#"> Disneyland </a>
                         </h4>
                     </div>
                 </div>

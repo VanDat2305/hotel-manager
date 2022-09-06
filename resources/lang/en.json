@@ -55,7 +55,7 @@
     "NAMEROOM" : "Name Room",
     "INFORMATION" : "Information",
     "SUBPRICE" : "Sub_price",
-    "TOTALPRICE" : "Total_price",
+    "TOTALPRICE" : "Total price",
     "BACK" : "Back",
     "Firstname" : "Firstname",
     "Lastname" : "Lastname",
@@ -103,5 +103,11 @@
     "NOW" : "Now",
     "ON" : "On",
     "OFF" : "Off",
-    "PAYMENT" : "Payment"
+    "PAYMENT" : "Payment",
+    "You need to login" : "You need to login",
+    "BOOKINGID" : "Booking id",
+    "Thank you for trusting and using services" : "Thank you for trusting and using services",
+    "Details are as follows" : "Details are as follows",
+    "Edit Profile" : "Edit Profile",
+    "Password Change" : "Password Change"
 }
