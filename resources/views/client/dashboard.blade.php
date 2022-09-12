@@ -20,7 +20,7 @@
                                 <li class="list active">
                                     <a href="{{route('dashboard')}}"> <i class="las la-briefcase"></i> {{__('DASHBOARD')}} </a>
                                 </li>
-                                <li class="list has-children">
+                                {{-- <li class="list has-children">
                                     <a> <i class="las la-user-circle"></i>{{__('Profile')}}</a>
                                     <ul class="submenu list-style-none">
                                         <li class="list"> <a href="dashboard_profile.html"> {{__('Profile')}} </a> </li>
@@ -28,7 +28,7 @@
                                         <li class="list"> <a href="dashboard_pass_change.html"> {{__('Password Change')}} </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li class="list">
                                     <a href="{{ route('logoutClient') }}"> <i class="las la-sign-out-alt"></i> {{__('LOGOUT')}} </a>
                                 </li>
@@ -123,14 +123,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-reservation-item">
+                            {{-- <div class="single-reservation-item">
                                 <div class="single-reservation-flex">
                                     <div class="single-reservation-btn">
                                         <a href="javascript:void(0)" class="dash-btn popup-click"> <i
                                                 class="las la-exclamation-circle"></i> Cancel? </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                       @endforeach

@@ -44,6 +44,7 @@ Route::post('/admin/login', 'Auth\LoginAdminController@postLogin')->name('postLo
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(
     function () {
         Route::get('', 'Admin\DashboardController@index')->name('dashboard');
+        Route::get('/statistic', 'Admin\DashboardController@showChart')->name('statistic');
         Route::prefix('user')->middleware('admin')->name('user.')->group(
             function () {
                 Route::get('/', 'Admin\UserController@index')->name('index');

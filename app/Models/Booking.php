@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\DB;
 class Booking extends Model
 {
     use HasFactory;
+    public function __construct()
+    {
+        Booking::where([
+            ['check_in','<',NOW()],
+            ['check_out','>',NOW()],
+            ['status','=',1],
+        ])->update(['status'=>5]);
+    }
     public function customer()
     {
         return $this->belongsTo(Customer::class);

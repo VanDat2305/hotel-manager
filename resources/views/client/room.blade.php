@@ -26,10 +26,14 @@
                                 <span class="banner-location-single-contents-subtitle">{{ __('CHECKIN') }} </span>
                                 <div class="input-group mb-3" style="position: relative" id="checkin"
                                     data-target-input="nearest">
-                                    <input type="text" class="form-control" name="checkin" data-toggle="checkin"
+                                    <input type="text" class="form-control datetimepicker-input" name="checkin" data-toggle="checkin"
                                         data-target="#checkin">
-                                    <span class="input-group-text" id="basic-addon2" data-target="#checkin"
-                                        data-toggle="datetimepicker"><i class="la la-calendar "></i></span>
+                                        <div class="input-group-append" data-target="#checkin"
+                                        data-toggle="datetimepicker">
+                                        <div class="input-group-text">
+                                            <i class="la la-calendar pt-1 pb-1"></i>
+                                        </div>
+                                    </div>
                                 </div>
                                 @error('checkin')
                                     <p class="text-danger">{{ $message }}</p>
@@ -43,9 +47,13 @@
                                 <span class="banner-location-single-contents-subtitle">{{ __('CHECKOUT') }} </span>
                                 <div class="input-group mb-3" style="position: relative" id="checkout"
                                     data-target-input="nearest">
-                                    <input type="text" class="form-control" name="checkout" data-target="#checkout">
-                                    <span class="input-group-text" id="basic-addon4" data-target="#checkout"
-                                        data-toggle="datetimepicker"><i class="la la-calendar "></i></span>
+                                    <input type="text" class="form-control datetimepicker-input" name="checkout" data-target="#checkout">
+                                    <div class="input-group-append" data-target="#checkout"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text">
+                                        <i class="la la-calendar pt-1 pb-1"></i>
+                                    </div>
+                                </div>
                                 </div>
                                 @error('checkout')
                                     <p class="text-danger">{{ $message }}</p>

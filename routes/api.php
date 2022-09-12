@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::prefix('category')->group(function(){
+    Route::get('/','Api\CategoryController@index');
+    Route::post('/store','Api\CategoryController@store');
+    Route::patch('/update/{id}','Api\CategoryController@update');
+});

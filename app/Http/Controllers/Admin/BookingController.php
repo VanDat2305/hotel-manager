@@ -23,7 +23,6 @@ class BookingController extends Controller
     {
         $this->v['title'] = __('List booking');
         $this->v['bookings'] = Booking::get();
-
         return view('admin.booking.index', $this->v);
     }
     public function create($room_id)
