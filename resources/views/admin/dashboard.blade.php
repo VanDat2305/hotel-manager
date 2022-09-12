@@ -101,9 +101,8 @@
         </div>
     </div>
 @endsection
-@section('style')
+@section('script')
     @parent
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- OPTIONAL SCRIPTS -->
     <script src="{{ asset('bower_components/template-admin/plugins/chart.js/Chart.min.js') }}"></script>
     <script>

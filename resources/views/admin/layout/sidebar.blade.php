@@ -84,7 +84,14 @@
                         </p>
                     </a>
                 </li>
-               
+                <li class="nav-item">
+                    <a href="{{route('admin.statistic')}}" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            {{__('Statistic')}}  
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('logOut') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
